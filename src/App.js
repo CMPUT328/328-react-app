@@ -1,30 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "@aws-amplify/ui-react/styles.css";
-import { API } from "aws-amplify";
-import { Text, View, withAuthenticator } from "@aws-amplify/ui-react";
-import { createRegion } from "./graphql/mutations";
+import { View } from "@aws-amplify/ui-react";
+import DataPush from "./DataPush";
 
-const App = ({ signOut }) => {
-  async function pushRegion() {
-    const region = {
-      id: 1,
-      leagues: [1, 2, 3, 4],
-    };
-    await API.graphql({
-      query: createRegion,
-      variables: { input: region },
-    });
-  }
-
-  useEffect(() => {
-    pushRegion();
-  }, []);
-
+const App = () => {
   return (
     <View className="App">
-      <Text>Yo</Text>
+      {/* add this if we need to push data otherwise comment it out */}
+      <DataPush />
     </View>
   );
 };
 
-export default withAuthenticator(App);
+export default App;
