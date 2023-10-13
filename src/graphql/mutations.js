@@ -1,47 +1,374 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createNote = /* GraphQL */ `
-  mutation CreateNote(
-    $input: CreateNoteInput!
-    $condition: ModelNoteConditionInput
+export const createRegion = /* GraphQL */ `
+  mutation CreateRegion(
+    $input: CreateRegionInput!
+    $condition: ModelRegionConditionInput
   ) {
-    createNote(input: $input, condition: $condition) {
+    createRegion(input: $input, condition: $condition) {
       id
-      name
-      description
+      leagues {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const updateNote = /* GraphQL */ `
-  mutation UpdateNote(
-    $input: UpdateNoteInput!
-    $condition: ModelNoteConditionInput
+export const updateRegion = /* GraphQL */ `
+  mutation UpdateRegion(
+    $input: UpdateRegionInput!
+    $condition: ModelRegionConditionInput
   ) {
-    updateNote(input: $input, condition: $condition) {
+    updateRegion(input: $input, condition: $condition) {
       id
-      name
-      description
+      leagues {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const deleteNote = /* GraphQL */ `
-  mutation DeleteNote(
-    $input: DeleteNoteInput!
-    $condition: ModelNoteConditionInput
+export const deleteRegion = /* GraphQL */ `
+  mutation DeleteRegion(
+    $input: DeleteRegionInput!
+    $condition: ModelRegionConditionInput
   ) {
-    deleteNote(input: $input, condition: $condition) {
+    deleteRegion(input: $input, condition: $condition) {
       id
-      name
-      description
+      leagues {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
+      __typename
+    }
+  }
+`;
+export const createLeague = /* GraphQL */ `
+  mutation CreateLeague(
+    $input: CreateLeagueInput!
+    $condition: ModelLeagueConditionInput
+  ) {
+    createLeague(input: $input, condition: $condition) {
+      id
+      league_name
+      region {
+        id
+        createdAt
+        updatedAt
+        __typename
+      }
+      tournaments {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      regionLeaguesId
+      __typename
+    }
+  }
+`;
+export const updateLeague = /* GraphQL */ `
+  mutation UpdateLeague(
+    $input: UpdateLeagueInput!
+    $condition: ModelLeagueConditionInput
+  ) {
+    updateLeague(input: $input, condition: $condition) {
+      id
+      league_name
+      region {
+        id
+        createdAt
+        updatedAt
+        __typename
+      }
+      tournaments {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      regionLeaguesId
+      __typename
+    }
+  }
+`;
+export const deleteLeague = /* GraphQL */ `
+  mutation DeleteLeague(
+    $input: DeleteLeagueInput!
+    $condition: ModelLeagueConditionInput
+  ) {
+    deleteLeague(input: $input, condition: $condition) {
+      id
+      league_name
+      region {
+        id
+        createdAt
+        updatedAt
+        __typename
+      }
+      tournaments {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      regionLeaguesId
+      __typename
+    }
+  }
+`;
+export const createTournament = /* GraphQL */ `
+  mutation CreateTournament(
+    $input: CreateTournamentInput!
+    $condition: ModelTournamentConditionInput
+  ) {
+    createTournament(input: $input, condition: $condition) {
+      id
+      tournament_name
+      tournament_name_partial
+      league {
+        id
+        league_name
+        createdAt
+        updatedAt
+        regionLeaguesId
+        __typename
+      }
+      teams {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      leagueTournamentsId
+      __typename
+    }
+  }
+`;
+export const updateTournament = /* GraphQL */ `
+  mutation UpdateTournament(
+    $input: UpdateTournamentInput!
+    $condition: ModelTournamentConditionInput
+  ) {
+    updateTournament(input: $input, condition: $condition) {
+      id
+      tournament_name
+      tournament_name_partial
+      league {
+        id
+        league_name
+        createdAt
+        updatedAt
+        regionLeaguesId
+        __typename
+      }
+      teams {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      leagueTournamentsId
+      __typename
+    }
+  }
+`;
+export const deleteTournament = /* GraphQL */ `
+  mutation DeleteTournament(
+    $input: DeleteTournamentInput!
+    $condition: ModelTournamentConditionInput
+  ) {
+    deleteTournament(input: $input, condition: $condition) {
+      id
+      tournament_name
+      tournament_name_partial
+      league {
+        id
+        league_name
+        createdAt
+        updatedAt
+        regionLeaguesId
+        __typename
+      }
+      teams {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      leagueTournamentsId
+      __typename
+    }
+  }
+`;
+export const createTeam = /* GraphQL */ `
+  mutation CreateTeam(
+    $input: CreateTeamInput!
+    $condition: ModelTeamConditionInput
+  ) {
+    createTeam(input: $input, condition: $condition) {
+      id
+      team_name
+      acronym
+      tournament {
+        id
+        tournament_name
+        tournament_name_partial
+        createdAt
+        updatedAt
+        leagueTournamentsId
+        __typename
+      }
+      players {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      tournamentTeamsId
+      __typename
+    }
+  }
+`;
+export const updateTeam = /* GraphQL */ `
+  mutation UpdateTeam(
+    $input: UpdateTeamInput!
+    $condition: ModelTeamConditionInput
+  ) {
+    updateTeam(input: $input, condition: $condition) {
+      id
+      team_name
+      acronym
+      tournament {
+        id
+        tournament_name
+        tournament_name_partial
+        createdAt
+        updatedAt
+        leagueTournamentsId
+        __typename
+      }
+      players {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      tournamentTeamsId
+      __typename
+    }
+  }
+`;
+export const deleteTeam = /* GraphQL */ `
+  mutation DeleteTeam(
+    $input: DeleteTeamInput!
+    $condition: ModelTeamConditionInput
+  ) {
+    deleteTeam(input: $input, condition: $condition) {
+      id
+      team_name
+      acronym
+      tournament {
+        id
+        tournament_name
+        tournament_name_partial
+        createdAt
+        updatedAt
+        leagueTournamentsId
+        __typename
+      }
+      players {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      tournamentTeamsId
+      __typename
+    }
+  }
+`;
+export const createPlayer = /* GraphQL */ `
+  mutation CreatePlayer(
+    $input: CreatePlayerInput!
+    $condition: ModelPlayerConditionInput
+  ) {
+    createPlayer(input: $input, condition: $condition) {
+      id
+      username
+      role
+      team {
+        id
+        team_name
+        acronym
+        createdAt
+        updatedAt
+        tournamentTeamsId
+        __typename
+      }
+      createdAt
+      updatedAt
+      teamPlayersId
+      __typename
+    }
+  }
+`;
+export const updatePlayer = /* GraphQL */ `
+  mutation UpdatePlayer(
+    $input: UpdatePlayerInput!
+    $condition: ModelPlayerConditionInput
+  ) {
+    updatePlayer(input: $input, condition: $condition) {
+      id
+      username
+      role
+      team {
+        id
+        team_name
+        acronym
+        createdAt
+        updatedAt
+        tournamentTeamsId
+        __typename
+      }
+      createdAt
+      updatedAt
+      teamPlayersId
+      __typename
+    }
+  }
+`;
+export const deletePlayer = /* GraphQL */ `
+  mutation DeletePlayer(
+    $input: DeletePlayerInput!
+    $condition: ModelPlayerConditionInput
+  ) {
+    deletePlayer(input: $input, condition: $condition) {
+      id
+      username
+      role
+      team {
+        id
+        team_name
+        acronym
+        createdAt
+        updatedAt
+        tournamentTeamsId
+        __typename
+      }
+      createdAt
+      updatedAt
+      teamPlayersId
       __typename
     }
   }

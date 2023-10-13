@@ -1,35 +1,34 @@
-type Regions @model @auth(rules: [{ allow: public }]) {
-  id: String!
-  # child
-  leagues: [Leagues] @connection(keyName: "LeaguesInRegion", fields: ["id"])
+type Region @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  leagues: [League] @hasMany
 }
 
-type Leagues @model @auth(rules: [{ allow: public }]) {
+type League @model @auth(rules: [{ allow: public }]) {
   id: ID!
   league_name: String!
-  # child
-  tournaments: [Tournaments]
-    @connection(keyName: "TournamentsInLeague", fields: ["id"])
+  region: Region @belongsTo
+  tournaments: [Tournament] @hasMany
 }
 
-type Tournaments @model @auth(rules: [{ allow: public }]) {
+type Tournament @model @auth(rules: [{ allow: public }]) {
   id: ID!
   tournament_name: String!
   tournament_name_partial: String
-  # child
-  teams: [Teams] @connection(keyName: "TeamsInTournament", fields: ["id"])
+  league: League @belongsTo
+  teams: [Team] @hasMany
 }
 
-type Teams @model @auth(rules: [{ allow: public }]) {
+type Team @model @auth(rules: [{ allow: public }]) {
   id: ID!
   team_name: String!
   acronym: String
-  # child
-  players: [Players] @connection(keyName: "PlayersInTeam", fields: ["id"])
+  tournament: Tournament @belongsTo
+  players: [Player] @hasMany
 }
 
-type Players @model @auth(rules: [{ allow: public }]) {
+type Player @model @auth(rules: [{ allow: public }]) {
   id: ID!
   username: String!
   role: String
+  team: Team @belongsTo
 }
