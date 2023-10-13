@@ -1,5 +1,35 @@
-type Note @model @auth(rules: [{ allow: public }]) {
+type Regions @model @auth(rules: [{ allow: public }]) {
+  id: String!
+  # child
+  leagues: [Leagues] @connection(keyName: "LeaguesInRegion", fields: ["id"])
+}
+
+type Leagues @model @auth(rules: [{ allow: public }]) {
   id: ID!
-  name: String!
-  description: String
+  league_name: String!
+  # child
+  tournaments: [Tournaments]
+    @connection(keyName: "TournamentsInLeague", fields: ["id"])
+}
+
+type Tournaments @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  tournament_name: String!
+  tournament_name_partial: String
+  # child
+  teams: [Teams] @connection(keyName: "TeamsInTournament", fields: ["id"])
+}
+
+type Teams @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  team_name: String!
+  acronym: String
+  # child
+  players: [Players] @connection(keyName: "PlayersInTeam", fields: ["id"])
+}
+
+type Players @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  username: String!
+  role: String
 }
