@@ -141,7 +141,7 @@ const DataPush = () => {
     // pushLeague();
     // pushTournament();
     // pushTeam();
-    pushPlayer();
+    // pushPlayer();
   });
 
   return <></>;

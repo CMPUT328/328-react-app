@@ -1,7 +1,7 @@
 import React from "react";
 import "@aws-amplify/ui-react/styles.css";
 import { View } from "@aws-amplify/ui-react";
-import DataPush from "./DataPush";
+// import DataPush from "./DataPush";
 
 const App = () => {
   return (
