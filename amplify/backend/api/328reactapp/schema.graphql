@@ -1,34 +1,46 @@
-type Region @model @auth(rules: [{allow: public}]) {
+type Region @model @auth(rules: [{ allow: public }]) {
   id: ID!
-  leagues: [League] @hasMany
+  leagues: [League] @hasMany(indexName: "byRegion", fields: ["id"])
 }
 
-type League @model @auth(rules: [{allow: public}]) {
+type League @model @auth(rules: [{ allow: public }]) {
   id: ID!
   league_name: String!
-  region: Region @belongsTo
-  tournaments: [Tournament] @hasMany
+  image_url: String
+  region_id: ID! @index(name: "byRegion")
+  tournaments: [Tournament] @hasMany(indexName: "byLeague", fields: ["id"])
 }
 
-type Tournament @model @auth(rules: [{allow: public}]) {
+type Tournament @model @auth(rules: [{ allow: public }]) {
   id: ID!
   tournament_name: String!
   tournament_name_partial: String
-  league: League @belongsTo
-  teams: [Team] @hasMany
+  league_id: ID! @index(name: "byLeague")
+  teams: [TournamentTeamConnection]
+    @hasMany(indexName: "byTournament", fields: ["id"])
 }
 
-type Team @model @auth(rules: [{allow: public}]) {
+type Team @model @auth(rules: [{ allow: public }]) {
   id: ID!
   team_name: String!
   acronym: String
-  tournament: Tournament @belongsTo
-  players: [Player] @hasMany
+  tournaments: [TournamentTeamConnection]
+    @hasMany(indexName: "byTeam", fields: ["id"])
+  players: [Player] @hasMany(indexName: "byTeam", fields: ["id"])
 }
 
-type Player @model @auth(rules: [{allow: public}]) {
+# Join table to establish many-to-many relationship
+type TournamentTeamConnection @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  tournamentID: ID! @index(name: "byTournament")
+  teamID: ID! @index(name: "byTeam")
+  tournament: Tournament! @belongsTo(fields: ["tournamentID"])
+  team: Team! @belongsTo(fields: ["teamID"])
+}
+
+type Player @model @auth(rules: [{ allow: public }]) {
   id: ID!
   username: String!
   role: String
-  team: Team @belongsTo
-} 
+  team_id: ID @index(name: "byTeam")
+}

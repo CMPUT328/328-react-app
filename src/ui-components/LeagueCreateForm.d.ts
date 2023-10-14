@@ -14,14 +14,17 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type LeagueCreateFormInputValues = {
     league_name?: string;
+    image_url?: string;
 };
 export declare type LeagueCreateFormValidationValues = {
     league_name?: ValidationFunction<string>;
+    image_url?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type LeagueCreateFormOverridesProps = {
     LeagueCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
     league_name?: PrimitiveOverrideProps<TextFieldProps>;
+    image_url?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type LeagueCreateFormProps = React.PropsWithChildren<{
     overrides?: LeagueCreateFormOverridesProps | undefined | null;

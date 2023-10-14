@@ -60,19 +60,14 @@ export const createLeague = /* GraphQL */ `
     createLeague(input: $input, condition: $condition) {
       id
       league_name
-      region {
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
+      image_url
+      region_id
       tournaments {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      regionLeaguesId
       __typename
     }
   }
@@ -85,19 +80,14 @@ export const updateLeague = /* GraphQL */ `
     updateLeague(input: $input, condition: $condition) {
       id
       league_name
-      region {
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
+      image_url
+      region_id
       tournaments {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      regionLeaguesId
       __typename
     }
   }
@@ -110,19 +100,14 @@ export const deleteLeague = /* GraphQL */ `
     deleteLeague(input: $input, condition: $condition) {
       id
       league_name
-      region {
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
+      image_url
+      region_id
       tournaments {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      regionLeaguesId
       __typename
     }
   }
@@ -136,21 +121,13 @@ export const createTournament = /* GraphQL */ `
       id
       tournament_name
       tournament_name_partial
-      league {
-        id
-        league_name
-        createdAt
-        updatedAt
-        regionLeaguesId
-        __typename
-      }
+      league_id
       teams {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      leagueTournamentsId
       __typename
     }
   }
@@ -164,21 +141,13 @@ export const updateTournament = /* GraphQL */ `
       id
       tournament_name
       tournament_name_partial
-      league {
-        id
-        league_name
-        createdAt
-        updatedAt
-        regionLeaguesId
-        __typename
-      }
+      league_id
       teams {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      leagueTournamentsId
       __typename
     }
   }
@@ -192,21 +161,13 @@ export const deleteTournament = /* GraphQL */ `
       id
       tournament_name
       tournament_name_partial
-      league {
-        id
-        league_name
-        createdAt
-        updatedAt
-        regionLeaguesId
-        __typename
-      }
+      league_id
       teams {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      leagueTournamentsId
       __typename
     }
   }
@@ -220,13 +181,8 @@ export const createTeam = /* GraphQL */ `
       id
       team_name
       acronym
-      tournament {
-        id
-        tournament_name
-        tournament_name_partial
-        createdAt
-        updatedAt
-        leagueTournamentsId
+      tournaments {
+        nextToken
         __typename
       }
       players {
@@ -235,7 +191,6 @@ export const createTeam = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      tournamentTeamsId
       __typename
     }
   }
@@ -249,13 +204,8 @@ export const updateTeam = /* GraphQL */ `
       id
       team_name
       acronym
-      tournament {
-        id
-        tournament_name
-        tournament_name_partial
-        createdAt
-        updatedAt
-        leagueTournamentsId
+      tournaments {
+        nextToken
         __typename
       }
       players {
@@ -264,7 +214,6 @@ export const updateTeam = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      tournamentTeamsId
       __typename
     }
   }
@@ -278,13 +227,8 @@ export const deleteTeam = /* GraphQL */ `
       id
       team_name
       acronym
-      tournament {
-        id
-        tournament_name
-        tournament_name_partial
-        createdAt
-        updatedAt
-        leagueTournamentsId
+      tournaments {
+        nextToken
         __typename
       }
       players {
@@ -293,7 +237,102 @@ export const deleteTeam = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      tournamentTeamsId
+      __typename
+    }
+  }
+`;
+export const createTournamentTeamConnection = /* GraphQL */ `
+  mutation CreateTournamentTeamConnection(
+    $input: CreateTournamentTeamConnectionInput!
+    $condition: ModelTournamentTeamConnectionConditionInput
+  ) {
+    createTournamentTeamConnection(input: $input, condition: $condition) {
+      id
+      tournamentID
+      teamID
+      tournament {
+        id
+        tournament_name
+        tournament_name_partial
+        league_id
+        createdAt
+        updatedAt
+        __typename
+      }
+      team {
+        id
+        team_name
+        acronym
+        createdAt
+        updatedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateTournamentTeamConnection = /* GraphQL */ `
+  mutation UpdateTournamentTeamConnection(
+    $input: UpdateTournamentTeamConnectionInput!
+    $condition: ModelTournamentTeamConnectionConditionInput
+  ) {
+    updateTournamentTeamConnection(input: $input, condition: $condition) {
+      id
+      tournamentID
+      teamID
+      tournament {
+        id
+        tournament_name
+        tournament_name_partial
+        league_id
+        createdAt
+        updatedAt
+        __typename
+      }
+      team {
+        id
+        team_name
+        acronym
+        createdAt
+        updatedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteTournamentTeamConnection = /* GraphQL */ `
+  mutation DeleteTournamentTeamConnection(
+    $input: DeleteTournamentTeamConnectionInput!
+    $condition: ModelTournamentTeamConnectionConditionInput
+  ) {
+    deleteTournamentTeamConnection(input: $input, condition: $condition) {
+      id
+      tournamentID
+      teamID
+      tournament {
+        id
+        tournament_name
+        tournament_name_partial
+        league_id
+        createdAt
+        updatedAt
+        __typename
+      }
+      team {
+        id
+        team_name
+        acronym
+        createdAt
+        updatedAt
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
   }
@@ -307,18 +346,9 @@ export const createPlayer = /* GraphQL */ `
       id
       username
       role
-      team {
-        id
-        team_name
-        acronym
-        createdAt
-        updatedAt
-        tournamentTeamsId
-        __typename
-      }
+      team_id
       createdAt
       updatedAt
-      teamPlayersId
       __typename
     }
   }
@@ -332,18 +362,9 @@ export const updatePlayer = /* GraphQL */ `
       id
       username
       role
-      team {
-        id
-        team_name
-        acronym
-        createdAt
-        updatedAt
-        tournamentTeamsId
-        __typename
-      }
+      team_id
       createdAt
       updatedAt
-      teamPlayersId
       __typename
     }
   }
@@ -357,18 +378,9 @@ export const deletePlayer = /* GraphQL */ `
       id
       username
       role
-      team {
-        id
-        team_name
-        acronym
-        createdAt
-        updatedAt
-        tournamentTeamsId
-        __typename
-      }
+      team_id
       createdAt
       updatedAt
-      teamPlayersId
       __typename
     }
   }

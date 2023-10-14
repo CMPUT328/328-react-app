@@ -7,7 +7,7 @@ const App = () => {
   return (
     <View className="App">
       {/* add this if we need to push data otherwise comment it out */}
-      <DataPush />
+      {/* <DataPush /> */}
     </View>
   );
 };

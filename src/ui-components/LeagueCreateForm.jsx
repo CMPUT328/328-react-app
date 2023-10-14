@@ -24,17 +24,21 @@ export default function LeagueCreateForm(props) {
   } = props;
   const initialValues = {
     league_name: "",
+    image_url: "",
   };
   const [league_name, setLeague_name] = React.useState(
     initialValues.league_name
   );
+  const [image_url, setImage_url] = React.useState(initialValues.image_url);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setLeague_name(initialValues.league_name);
+    setImage_url(initialValues.image_url);
     setErrors({});
   };
   const validations = {
     league_name: [{ type: "Required" }],
+    image_url: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -63,6 +67,7 @@ export default function LeagueCreateForm(props) {
         event.preventDefault();
         let modelFields = {
           league_name,
+          image_url,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -126,6 +131,7 @@ export default function LeagueCreateForm(props) {
           if (onChange) {
             const modelFields = {
               league_name: value,
+              image_url,
             };
             const result = onChange(modelFields);
             value = result?.league_name ?? value;
@@ -139,6 +145,31 @@ export default function LeagueCreateForm(props) {
         errorMessage={errors.league_name?.errorMessage}
         hasError={errors.league_name?.hasError}
         {...getOverrideProps(overrides, "league_name")}
+      ></TextField>
+      <TextField
+        label="Image url"
+        isRequired={false}
+        isReadOnly={false}
+        value={image_url}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              league_name,
+              image_url: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.image_url ?? value;
+          }
+          if (errors.image_url?.hasError) {
+            runValidationTasks("image_url", value);
+          }
+          setImage_url(value);
+        }}
+        onBlur={() => runValidationTasks("image_url", image_url)}
+        errorMessage={errors.image_url?.errorMessage}
+        hasError={errors.image_url?.hasError}
+        {...getOverrideProps(overrides, "image_url")}
       ></TextField>
       <Flex
         justifyContent="space-between"

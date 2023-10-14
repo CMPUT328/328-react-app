@@ -38,19 +38,14 @@ export const getLeague = /* GraphQL */ `
     getLeague(id: $id) {
       id
       league_name
-      region {
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
+      image_url
+      region_id
       tournaments {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      regionLeaguesId
       __typename
     }
   }
@@ -65,9 +60,39 @@ export const listLeagues = /* GraphQL */ `
       items {
         id
         league_name
+        image_url
+        region_id
         createdAt
         updatedAt
-        regionLeaguesId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const leaguesByRegion_id = /* GraphQL */ `
+  query LeaguesByRegion_id(
+    $region_id: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelLeagueFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    leaguesByRegion_id(
+      region_id: $region_id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        league_name
+        image_url
+        region_id
+        createdAt
+        updatedAt
         __typename
       }
       nextToken
@@ -81,21 +106,13 @@ export const getTournament = /* GraphQL */ `
       id
       tournament_name
       tournament_name_partial
-      league {
-        id
-        league_name
-        createdAt
-        updatedAt
-        regionLeaguesId
-        __typename
-      }
+      league_id
       teams {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      leagueTournamentsId
       __typename
     }
   }
@@ -111,9 +128,38 @@ export const listTournaments = /* GraphQL */ `
         id
         tournament_name
         tournament_name_partial
+        league_id
         createdAt
         updatedAt
-        leagueTournamentsId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const tournamentsByLeague_id = /* GraphQL */ `
+  query TournamentsByLeague_id(
+    $league_id: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelTournamentFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    tournamentsByLeague_id(
+      league_id: $league_id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        tournament_name
+        tournament_name_partial
+        league_id
+        createdAt
+        updatedAt
         __typename
       }
       nextToken
@@ -127,13 +173,8 @@ export const getTeam = /* GraphQL */ `
       id
       team_name
       acronym
-      tournament {
-        id
-        tournament_name
-        tournament_name_partial
-        createdAt
-        updatedAt
-        leagueTournamentsId
+      tournaments {
+        nextToken
         __typename
       }
       players {
@@ -142,7 +183,6 @@ export const getTeam = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      tournamentTeamsId
       __typename
     }
   }
@@ -160,7 +200,115 @@ export const listTeams = /* GraphQL */ `
         acronym
         createdAt
         updatedAt
-        tournamentTeamsId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getTournamentTeamConnection = /* GraphQL */ `
+  query GetTournamentTeamConnection($id: ID!) {
+    getTournamentTeamConnection(id: $id) {
+      id
+      tournamentID
+      teamID
+      tournament {
+        id
+        tournament_name
+        tournament_name_partial
+        league_id
+        createdAt
+        updatedAt
+        __typename
+      }
+      team {
+        id
+        team_name
+        acronym
+        createdAt
+        updatedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listTournamentTeamConnections = /* GraphQL */ `
+  query ListTournamentTeamConnections(
+    $filter: ModelTournamentTeamConnectionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTournamentTeamConnections(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        tournamentID
+        teamID
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const tournamentTeamConnectionsByTournamentID = /* GraphQL */ `
+  query TournamentTeamConnectionsByTournamentID(
+    $tournamentID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelTournamentTeamConnectionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    tournamentTeamConnectionsByTournamentID(
+      tournamentID: $tournamentID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        tournamentID
+        teamID
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const tournamentTeamConnectionsByTeamID = /* GraphQL */ `
+  query TournamentTeamConnectionsByTeamID(
+    $teamID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelTournamentTeamConnectionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    tournamentTeamConnectionsByTeamID(
+      teamID: $teamID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        tournamentID
+        teamID
+        createdAt
+        updatedAt
         __typename
       }
       nextToken
@@ -174,18 +322,9 @@ export const getPlayer = /* GraphQL */ `
       id
       username
       role
-      team {
-        id
-        team_name
-        acronym
-        createdAt
-        updatedAt
-        tournamentTeamsId
-        __typename
-      }
+      team_id
       createdAt
       updatedAt
-      teamPlayersId
       __typename
     }
   }
@@ -201,9 +340,38 @@ export const listPlayers = /* GraphQL */ `
         id
         username
         role
+        team_id
         createdAt
         updatedAt
-        teamPlayersId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const playersByTeam_id = /* GraphQL */ `
+  query PlayersByTeam_id(
+    $team_id: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelPlayerFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    playersByTeam_id(
+      team_id: $team_id
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        username
+        role
+        team_id
+        createdAt
+        updatedAt
         __typename
       }
       nextToken
