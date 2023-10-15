@@ -6,6 +6,8 @@ import frameImage from "../images/frame.png";
 
 const TeamSelector = () => {
   const [regions, setRegions] = useState([]);
+  const [category, setCategory] = useState("Region"); // ["NBA", "NFL", "MLB", "NHL"
+  const [itemIndex, setItemIndex] = useState(-1);
   const [leagues, setLeagues] = useState([]);
 
   const fetchRegions = async () => {
@@ -27,7 +29,6 @@ const TeamSelector = () => {
       }
         `;
     const leagueData = await API.graphql(graphqlOperation(leagueByRegion));
-    console.log(leagueData.data.listLeagues.items);
     setLeagues(leagueData.data.listLeagues.items);
   };
 
@@ -36,19 +37,22 @@ const TeamSelector = () => {
   }, []);
 
   return (
-    <div className="frame">
-      <div className="content">
-        {regions.map((region) => (
-          <div key={region.id} className="region">
-            <p
-              onClick={() => {
-                fetchLeagues(region.id);
-              }}
-            >
-              {region.id}
-            </p>
-          </div>
-        ))}
+    <div className="frame-container">
+      <div className="frame">
+        <div className="content">
+          {regions.map((region, index) => (
+            <div key={region.id} className="region">
+              <p
+                onClick={() => {
+                  setItemIndex(index);
+                }}
+                style={{ color: itemIndex === index ? "goldenrod" : "white" }}
+              >
+                {region.id}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
