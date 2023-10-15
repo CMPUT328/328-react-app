@@ -11,17 +11,86 @@
 }
 
 .title-container {
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center; /* This will center the child elements (both the title and the button) horizontally */
 }
 
 .title-container h1 {
-    font-size: 3em;
-    margin-bottom: 20px; /* Adjust as needed */
+    font-weight: normal;
+    font-size: 4.4em;
+    margin-bottom: 10px; /* Adjust as needed */
+    text-shadow:
+        2px 2px 5px #fff,
+        -2px -2px 5px #fff,
+        2px -2px 5px #fff,
+        -2px 2px 5px #fff;
+}
+
+.custom-button {
+    background: url('../images/HomeButton.png') no-repeat center center;
+    background-size: cover; /* This will make the image cover the entire button */
+    border: none;
+    min-width: 400px; 
+    height: 80px; /* Adjust according to your image's height */
+    color: #fff; /* Adjust the color of the text */
+    font-size: 1.6em; /* Adjust the size of the text */
+    line-height: -20px; /* This will center the text vertically; adjust according to your button's height */
+    cursor: pointer; /* Makes it clear that it's clickable */
+    transition: 0.3s; /* Optional: for smooth hover effects */
+    padding-bottom: 8px;
+}
+
+.custom-button:hover {
+    /* Optional: Add any hover effects here, like changing the text color or adding a slight scale */
+    color: #eee; /* Slightly changes the text color on hover */
+    transform: scale(1.05); /* Slightly enlarges the button on hover */
 }
 
 .scroll-button {
+    background: url('../images/diamond-icon.png') no-repeat center center; 
+    background-size: contain;
+    width: 60px; /* Adjust as per the size of your custom image */
+    height: 60px; /* Adjust as per the size of your custom image */
+    border: none; 
+    cursor: pointer;
     position: absolute;
-    bottom: 10px; /* Adjust as needed */
+    bottom: 30px; 
+    left: 50%;  /* To center the button horizontally */
+    transform: translateX(-50%);  /* To center the button horizontally */
+}
+
+.scroll-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;  /* Positioning arrow in the center of the button */
+    left: 50%;  /* Positioning arrow in the center of the button */
+    transform: translate(-50%, -50%);  /* Centering the arrow */
+    background: url('../images/downArrow.svg') no-repeat center center;
+    background-size: contain;
+    width: 40px; /* Adjust as per the size of your arrow image */
+    height: 40px; /* Adjust as per the size of your arrow image */
+}
+
+.scroll-button:hover::after {
+    content: 'Scroll to Ranking';
+    position: absolute;
+    top: 100%;  /* positions the message just below the button */
+    left: 50%;  /* centers the message horizontally relative to the button */
+    transform: translateX(-50%);  /* shifts the message to the left by half its width to ensure it's centered */
+    background-color: rgba(0, 0, 0, 0.6);  /* slightly transparent black background for the message */
+    color: white;
+    padding: 5px 10px;  /* space around the text */
+    border-radius: 5px;  /* rounded corners */
+    font-size: 0.9em;  /* size of the text */
+    white-space: nowrap;  /* prevents the text from wrapping to the next line */
+    transition: 0.2s;  /* smooth appearance */
+    opacity: 0;  /* starts off invisible... */
+    pointer-events: none; /* ensures the tooltip doesn't interfere with click events */
+}
+
+.scroll-button:hover::after {
+    opacity: 1;  /* ... but becomes fully visible on hover */
+    top: 80%;  /* moves the message slightly upwards on hover for a subtle animation effect */
 }
