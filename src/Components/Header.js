@@ -1,6 +1,9 @@
 // src/components/Header.js
 import './Header.css';
+
 import TeamLogo from '../images/TeamLogo.png'; 
+
+import { NavLink } from "react-router-dom";
 
 import React from 'react';
 
@@ -12,10 +15,10 @@ function Header() {
             </div>
             <nav className="nav-container">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/tournament-ranking">Tournament Ranking</a></li>
-                    <li><a href="/team-ranking">Team Ranking</a></li>
-                    <li><a href="/global-ranking">Global Ranking</a></li>
+                    <li><NavLink to="/" activeClassName="activeLink">Home</NavLink></li>
+                    <li><NavLink to="/tournament-ranking" activeClassName="activeLink">Tournament Ranking</NavLink></li>
+                    <li><NavLink to="/team-ranking" activeClassName="activeLink">Team Ranking</NavLink></li>
+                    <li><NavLink to="/global-ranking" activeClassName="activeLink">Global Ranking</NavLink></li>
                 </ul>
             </nav>
         </header>

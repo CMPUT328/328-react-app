@@ -1,12 +1,31 @@
 /* src/components/Header.css */
 
 header {
+    font-size: 1.4em;
+    position: absolute;
+    padding-bottom: 30px; 
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 160px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px;
-    background-color: #000; /* Adjust based on your design */
+    /* background-color: #000; */
     color: #fff;
+    background: linear-gradient(to bottom, #000, #000 60%, transparent);
+}
+
+header ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+header img {
+    height: 50px; /* Adjust based on your design */
+    margin-right: 15px; /* Spacing between logo and other nav elements */
 }
 
 .logo-container img {
@@ -26,4 +45,8 @@ header {
 
 .nav-container a:hover {
     color: #777; /* Adjust based on your design */
+}
+
+.activeLink {
+    color: goldenrod; /* adjust as per the shade of your logo */
 }
