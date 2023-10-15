@@ -64,6 +64,14 @@
     bottom: 30px; 
     left: 50%;  /* To center the button horizontally */
     transform: translateX(-50%);  /* To center the button horizontally */
+    transition: text-shadow 0.3s;
+}
+
+.scroll-button:hover {
+    text-shadow: 2px 2px 5px #fff, 
+                 -2px -2px 5px #fff, 
+                 2px -2px 5px #fff, 
+                 -2px 2px 5px #fff; /* This adds text-shadow around the text */
 }
 
 .scroll-button::before {
@@ -71,11 +79,16 @@
     position: absolute;
     top: 50%;  /* Positioning arrow in the center of the button */
     left: 50%;  /* Positioning arrow in the center of the button */
-    transform: translate(-50%, -50%);  /* Centering the arrow */
+    transform: translate(-50%, -60%);  /* Centering the arrow */
     background: url('../images/downArrow.svg') no-repeat center center;
     background-size: contain;
     width: 40px; /* Adjust as per the size of your arrow image */
     height: 40px; /* Adjust as per the size of your arrow image */
+    transition: transform 0.3s;
+}
+
+.scroll-button:hover::before {
+    transform: translate(-50%, -40%);  /* This will move the arrow slightly down */
 }
 
 .scroll-button:hover::after {
