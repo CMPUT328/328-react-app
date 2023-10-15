@@ -18,7 +18,7 @@ function HomeScreen() {
         <div className="home-container">
             <div className="container" style={{ backgroundImage: `url(${Homebg})`, backgroundSize: 'cover' }}>
                 <div className="title-container">
-                    <h1>Make your Worlds 2023 Preediction</h1>
+                    <h1>Make your Worlds 2023 Prediction</h1>
                     <button className="custom-button" onClick={() => {/* Navigate to another screen */}}>
                         Predict Ranking
                     </button>
