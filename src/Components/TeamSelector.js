@@ -8,6 +8,17 @@ const TeamSelector = () => {
   const [category, setCategory] = useState("Region"); // ["NBA", "NFL", "MLB", "NHL"
   const [itemIndex, setItemIndex] = useState(-1);
   const [leagues, setLeagues] = useState([]);
+  const [imageSize, setImageSize] = useState(0);
+
+  var image = document.getElementById("frame");
+
+  const setSize = function (e) {
+    if (e.target.width < e.target.height) {
+      setImageSize(e.target.width - 170);
+    } else {
+      setImageSize(e.target.height - 170);
+    }
+  };
 
   const fetchRegions = async () => {
     const regionData = await API.graphql(graphqlOperation(listRegions));
@@ -43,7 +54,16 @@ const TeamSelector = () => {
           src={require("../images/frame.png")}
           alt="frame"
           className="responsive-image"
+          id="frame"
+          onLoad={setSize}
         />
+        <div
+          className="content-container"
+          style={{
+            width: imageSize,
+            height: imageSize,
+          }}
+        ></div>
       </div>
     </div>
   );

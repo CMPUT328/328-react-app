@@ -12,6 +12,7 @@
 .part2{
     flex:5;
     position: relative;
+
     /* needed for the absolute positioning of the image */
 }
 
@@ -21,4 +22,18 @@
     height: 100%;
     object-fit: contain;
     position: absolute;
+}
+
+.content-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    /* This ensures content is on top of the image */
+    background-color: yellow;
+    /* Optional, adjust as desired */
+    margin: auto;
+    
 }
