@@ -19,7 +19,7 @@ function HomeScreen() {
         style={{ backgroundImage: `url(${Homebg})`, backgroundSize: "cover" }}
       >
         <div className="title-container">
-          <h1>Make your Worlds 2023 Prediction</h1>
+          <h1>Make you Worlds 2023 Prediction</h1>
           <button
             className="custom-button"
             onClick={() => {
