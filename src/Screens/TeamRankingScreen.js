@@ -8,8 +8,7 @@ const TeamRankingScreen = () => {
     <div className="teamRankingScreen">
       <div className="leaderBoard">hi</div>
       <div className="teamRankingInput">
-        <div className="input1"></div>
-        <div className="input2"></div>
+        <TeamSelector />
       </div>
     </div>
   );

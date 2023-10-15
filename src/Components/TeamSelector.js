@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { listRegions } from "../graphql/queries";
 import "./Styles.css";
+import frameImage from "../images/frame.png";
 
 const TeamSelector = () => {
   const [regions, setRegions] = useState([]);
@@ -34,7 +35,12 @@ const TeamSelector = () => {
     fetchRegions();
   }, []);
 
-  return <img url={"../images/france.png"} className="frame" />;
+  return (
+    <>
+      <div className="frame"></div>
+      <div className="frame"></div>
+    </>
+  );
 };
 
 export default TeamSelector;
