@@ -1,0 +1,35 @@
+.teamRankingScreen {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.leaderBoard {
+  background-color: aliceblue;
+  flex: 1;
+  height: 100vh;
+}
+
+.teamRankingInput {
+  background-color: yellow;
+  flex: 1;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.input1 {
+  background-color: red;
+  flex: 1;
+  height: 50vh;
+}
+
+.input2 {
+  background-color: blue;
+  flex: 1;
+  height: 50vh;
+}
