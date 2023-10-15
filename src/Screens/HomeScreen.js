@@ -20,7 +20,7 @@ function HomeScreen() {
                 <div className="title-container">
                     <h1>Make your Worlds 2023 Prediction</h1>
                     <button className="custom-button" onClick={() => {/* Navigate to another screen */}}>
-                        Predict Rankng
+                        Predict Ranking
                     </button>
                 </div>
                 <button className="scroll-button" onClick={handleScroll}></button>
