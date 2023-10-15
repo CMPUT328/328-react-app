@@ -1,0 +1,24 @@
+.frame-container{
+    flex:2;
+    display: flex;
+    flex-direction: column;
+}
+
+.part1 {
+    flex: 1;
+    position: relative;
+    /* needed for the absolute positioning of the image */
+}
+.part2{
+    flex:5;
+    position: relative;
+    /* needed for the absolute positioning of the image */
+}
+
+/* Making the image responsive */
+.responsive-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+}

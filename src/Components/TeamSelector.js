@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { listRegions } from "../graphql/queries";
-import "./Styles.css";
-import frameImage from "../images/frame.png";
+import "./TeamSelector.css";
 
 const TeamSelector = () => {
   const [regions, setRegions] = useState([]);
@@ -38,21 +37,13 @@ const TeamSelector = () => {
 
   return (
     <div className="frame-container">
-      <div className="frame">
-        <div className="content">
-          {regions.map((region, index) => (
-            <div key={region.id} className="region">
-              <p
-                onClick={() => {
-                  setItemIndex(index);
-                }}
-                style={{ color: itemIndex === index ? "goldenrod" : "white" }}
-              >
-                {region.id}
-              </p>
-            </div>
-          ))}
-        </div>
+      <div className="part1"></div>
+      <div className="part2">
+        <img
+          src={require("../images/frame.png")}
+          alt="frame"
+          className="responsive-image"
+        />
       </div>
     </div>
   );

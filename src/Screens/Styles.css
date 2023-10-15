@@ -2,7 +2,6 @@
   display: flex;
   flex: 1;
   flex-direction: row;
-  background-color: black;
   width: 100vw;
   height: 100vh;
   justify-content: center;
@@ -11,25 +10,19 @@
 }
 
 .leaderBoard {
-  background-color: aliceblue;
   flex: 1;
-  height: 100vh;
-}
-
-.input {
-  background-color: blue;
-  width: 100%;
-  height: 50%;
-  display: flex;
-  flex: 1;
+  height: 100%;
 }
 
 .teamRankingInput {
   display: flex;
   flex: 1;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
+.bucket {
+  display: flex;
+  flex: 1;
+}
+
 
