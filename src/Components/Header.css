@@ -39,13 +39,12 @@ header img {
     color: #fff;
     transition: color 0.2s;
     padding-right: 50px;
-    padding-bottom: 200px;
 }
 
 .nav-container a:hover {
     color: #777;
 }
 
-.activeLink {
+.nav-container a.activeLink {
     color: goldenrod;
 }
