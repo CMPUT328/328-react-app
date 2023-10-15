@@ -36,10 +36,21 @@ const TeamSelector = () => {
   }, []);
 
   return (
-    <>
-      <div className="frame"></div>
-      <div className="frame"></div>
-    </>
+    <div className="frame">
+      <div className="content">
+        {regions.map((region) => (
+          <div key={region.id} className="region">
+            <p
+              onClick={() => {
+                fetchLeagues(region.id);
+              }}
+            >
+              {region.id}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
