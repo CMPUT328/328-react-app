@@ -1,33 +1,25 @@
-import { Outlet, Link } from "react-router-dom";
-import "./Styles.css";
+// src/components/Header.js
+import './Header.css';
+import TeamLogo from '../images/TeamLogo.png'; 
 
-const Header = () => {
-  return (
-    <>
-      <div className="header">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/tournament-ranking">Tournament Ranking</Link>
-            </li>
-            <li>
-              <Link to="/team-ranking">Team Ranking</Link>
-            </li>
-            <li>
-              <Link to="/global-ranking">Global Ranking</Link>
-            </li>
-            <li>
-              <Link to="/predict-ranking">Predict Ranking</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <Outlet />
-    </>
-  );
-};
+import React from 'react';
+
+function Header() {
+    return (
+        <header>
+            <div className="logo-container">
+                <img src={ TeamLogo } alt="Logo" />
+            </div>
+            <nav className="nav-container">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tournament-ranking">Tournament Ranking</a></li>
+                    <li><a href="/team-ranking">Team Ranking</a></li>
+                    <li><a href="/global-ranking">Global Ranking</a></li>
+                </ul>
+            </nav>
+        </header>
+    );
+}
 
 export default Header;

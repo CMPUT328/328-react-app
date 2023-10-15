@@ -1,0 +1,29 @@
+/* src/components/Header.css */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #000; /* Adjust based on your design */
+    color: #fff;
+}
+
+.logo-container img {
+    max-height: 40px; /* Adjust based on your design */
+}
+
+.nav-container ul {
+    display: flex;
+    gap: 20px; /* Adjust based on your design */
+}
+
+.nav-container a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.2s;
+}
+
+.nav-container a:hover {
+    color: #777; /* Adjust based on your design */
+}
