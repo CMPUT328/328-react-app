@@ -1,21 +1,17 @@
-/* src/components/Header.css */
-
 header {
-    font-size: 1.4em;
+    font-size: 1.3em;
     position: absolute;
-    padding-bottom: 30px; 
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    height: 160px; 
+    height: 100px; 
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 10px 30px;
-    /* background-color: #000; */
     color: #fff;
-    background: linear-gradient(to bottom, #000, #000 60%, transparent);
+    background: linear-gradient(to bottom, #000, #000 80%, transparent);
+    padding-top: 22px; 
 }
 
 header ul {
@@ -24,29 +20,32 @@ header ul {
 }
 
 header img {
-    height: 50px; /* Adjust based on your design */
-    margin-right: 15px; /* Spacing between logo and other nav elements */
+    height: 50px;
+    margin-right: 15px;
 }
 
 .logo-container img {
-    max-height: 40px; /* Adjust based on your design */
+    padding-left: 35px;
+    min-height: 80px;
 }
 
 .nav-container ul {
     display: flex;
-    gap: 20px; /* Adjust based on your design */
+    gap: 30px;
 }
 
 .nav-container a {
     text-decoration: none;
     color: #fff;
     transition: color 0.2s;
+    padding-right: 50px;
+    padding-bottom: 200px;
 }
 
 .nav-container a:hover {
-    color: #777; /* Adjust based on your design */
+    color: #777;
 }
 
 .activeLink {
-    color: goldenrod; /* adjust as per the shade of your logo */
+    color: goldenrod;
 }
