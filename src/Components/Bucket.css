@@ -46,9 +46,21 @@
 .bucket-content {
   flex: 8;
   overflow-y: scroll;
-  font-size: x-large;
+  font-size: large;
+  padding-bottom: 10px;
 }
 
 .bucket-content::-webkit-scrollbar {
   display: none;
+}
+
+.bucket-content p {
+  cursor: pointer;
+}
+.bucket-content p:hover {
+  color: darkred;
+}
+
+.button-container:hover{
+  opacity: 0.8;
 }

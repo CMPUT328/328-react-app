@@ -6,13 +6,11 @@ import "./TeamSelector.css";
 const TeamSelector = ({ setBucket, getBucket }) => {
   const [regions, setRegions] = useState([]);
   const [category, setCategory] = useState("Region");
-  const [rankingTeam, setRankingTeam] = useState({});
   const [leagues, setLeagues] = useState([]);
   const [imageSize, setImageSize] = useState(0);
   const [regionChoice, setRegionChoice] = useState("");
   const [leagueChoice, setLeagueChoice] = useState("");
   const [teams, setTeams] = useState({});
-  const [teamIndex, setTeamIndex] = useState([]);
 
   const setSize = function (e) {
     if (e.target.width < e.target.height) {
@@ -87,8 +85,6 @@ const TeamSelector = ({ setBucket, getBucket }) => {
     const temp = getBucket();
     temp[team] = teams[team];
     setBucket(temp);
-    setTeamIndex([...teamIndex, team]);
-    console.log(getBucket());
   };
 
   useEffect(() => {
@@ -223,7 +219,7 @@ const TeamSelector = ({ setBucket, getBucket }) => {
                         updateRankingTeam(team);
                       }}
                       style={{
-                        color: teamIndex.includes(team) ? "#CBAF86" : null,
+                        color: team in getBucket() ? "#CBAF86" : null,
                       }}
                     >
                       {teams[team].team_name}

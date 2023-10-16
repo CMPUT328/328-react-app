@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Bucket.css";
 
 const bucketRatio = 499 / 692;
 
-const Bucket = ({ rankingTeam }) => {
+const Bucket = ({ getBucket, setBucket }) => {
   const [topStart, setTopStart] = useState(0);
   const [leftStart, setLeftStart] = useState(0);
   const [height, setHeight] = useState(0);
@@ -23,6 +23,12 @@ const Bucket = ({ rankingTeam }) => {
     }
   };
 
+  const removeTeam = (key) => {
+    const temp = getBucket();
+    delete temp[key];
+    setBucket(temp);
+  };
+
   return (
     <div className="bucket-container">
       <div className="gap"></div>
@@ -37,31 +43,41 @@ const Bucket = ({ rankingTeam }) => {
           style={{
             maxHeight: height * 0.7,
             maxWidth: width - 80,
+            paddingBottom: 35,
           }}
         >
           <div className="bucket-content">
-            {Object.keys(rankingTeam).map((key) => {
+            {Object.keys(getBucket()).map((key) => {
               return (
-                <>
-                  <p>{rankingTeam[key].team_name}</p>
-                  <hr style={{}} />
-                </>
+                <div key={key}>
+                  <p onClick={() => removeTeam(key)}>
+                    {getBucket()[key].team_name}
+                  </p>
+                  <hr />
+                </div>
               );
             })}
           </div>
         </div>
+        <div className="button-container">
+          <img
+            src={require("../images/enter-button.png")}
+            className="enter-button"
+            alt="next"
+            style={{
+              top: topStart + height * 0.7 + 20,
+              left: leftStart + width - width / 5 - 30,
+              width: width / 5,
+              zIndex: 1,
+              position: "absolute",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              console.log(getBucket());
+            }}
+          ></img>
+        </div>
       </div>
-      <img
-        src={require("../images/enter-button.png")}
-        style={{
-          width: width / 5,
-          position: "absolute",
-          top: topStart + height * 0.7 + 30,
-          left: leftStart + width - width / 6 - 60,
-          zIndex: 1,
-        }}
-        alt="next"
-      ></img>
     </div>
   );
 };
