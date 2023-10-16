@@ -3,7 +3,7 @@ import { API, graphqlOperation } from "aws-amplify";
 import { listRegions } from "../graphql/queries";
 import "./TeamSelector.css";
 
-const TeamSelector = () => {
+const TeamSelector = ({ setBucket, getBucket }) => {
   const [regions, setRegions] = useState([]);
   const [category, setCategory] = useState("Region");
   const [rankingTeam, setRankingTeam] = useState({});
@@ -84,8 +84,11 @@ const TeamSelector = () => {
   };
 
   const updateRankingTeam = (team) => {
-    setRankingTeam({ ...rankingTeam, team: teams[team] });
+    const temp = getBucket();
+    temp[team] = teams[team];
+    setBucket(temp);
     setTeamIndex([...teamIndex, team]);
+    console.log(getBucket());
   };
 
   useEffect(() => {
@@ -110,6 +113,7 @@ const TeamSelector = () => {
           style={{
             width: imageSize,
             height: imageSize,
+            paddingBottom: imageSize / 7,
           }}
         >
           <div className="tabs">
