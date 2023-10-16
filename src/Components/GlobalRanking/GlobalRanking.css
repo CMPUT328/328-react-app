@@ -1,0 +1,122 @@
+.background-image {
+    background-image: url("../../images/bg-globalRanking.png");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.header {
+    padding-top: 5rem;
+    font-size: 3rem;
+    color: #a59b96;
+    text-align: center;
+}
+
+.dropdown {
+    margin-left: 5rem;
+    position: relative;
+    width: fit-content;
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+}
+
+.dropdown-button {
+    color: #a59b96;
+    font-size: 1.7rem;
+    cursor: pointer;
+    background-color: transparent;
+    width: 9.375rem;
+    height: 3.125rem;
+    padding: 1rem;
+    border: 4px solid #695611;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(211, 211, 211, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown-button-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    margin-right: 0.5rem;
+}
+
+.arrow {
+    background-image: url("../../images/dropdown-arrow.png");
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease-in-out;
+}
+
+.arrow-up {
+    transform: rotate(180deg);
+}
+
+.dropdown-options {
+    width: 9.375rem;
+    position: absolute;
+    top: calc(3rem + 2rem + 8px);
+    left: 1rem;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.dropdown-item {
+    display: block;
+    width: 9.375rem;
+    padding: 0.5rem;
+    color: #a59b96;
+    background-color: #695611;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.dropdown-item:hover {
+    background-color: #685f31;
+}
+
+.option {
+    display: none;
+}
+
+.searchbox {
+    font-size: 2rem;
+    width: 21.875rem;
+    height: 3.125rem;
+    padding: 1rem;
+    margin: 1rem;
+    color: #a59b96;
+    cursor: pointer;
+    background: transparent;
+    border: 4px solid #695611;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(211, 211, 211, 0.5);
+    padding-right: 40px;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10%;
+    top: 40%;
+
+    background-image: url("../../images/search-icon.png");
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
