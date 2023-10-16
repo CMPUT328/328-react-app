@@ -5,7 +5,7 @@ import "./TeamSelector.css";
 
 const TeamSelector = () => {
   const [regions, setRegions] = useState([]);
-  const [category, setCategory] = useState("Region"); // ["NBA", "NFL", "MLB", "NHL"
+  const [category, setCategory] = useState("Region");
   const [itemIndex, setItemIndex] = useState(-1);
   const [leagues, setLeagues] = useState([]);
   const [imageSize, setImageSize] = useState(0);
@@ -63,26 +63,37 @@ const TeamSelector = () => {
             width: imageSize,
             height: imageSize,
           }}
-        ></div>
+        >
+          <div className="tabs">
+            <p style={{ color: category === "Region" ? "#BBA59A" : "#4C4E52" }}>
+              Region
+            </p>
+            <img src={require("../images/arrow-icon.png")}></img>
+            <p style={{ color: category === "League" ? "#BBA59A" : "#4C4E52" }}>
+              League
+            </p>
+            <img src={require("../images/arrow-icon.png")}></img>
+            <p style={{ color: category === "Teams" ? "#BBA59A" : "#4C4E52" }}>
+              Teams
+            </p>
+          </div>
+          <div className="region">
+            {regions.map((region) => (
+              <div key={region.id}>
+                <p
+                  onClick={() => {
+                    fetchLeagues(region.id);
+                  }}
+                >
+                  {region.id}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 export default TeamSelector;
-
-// <div className="frame">
-//   <div className="container">
-//     {regions.map((region) => (
-//       <div key={region.id} className="region">
-//         <p
-//           onClick={() => {
-//             fetchLeagues(region.id);
-//           }}
-//         >
-//           {region.id}
-//         </p>
-//       </div>
-//     ))}
-//   </div>
-// </div>
