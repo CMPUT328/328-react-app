@@ -9,6 +9,8 @@ const TeamSelector = () => {
   const [itemIndex, setItemIndex] = useState(-1);
   const [leagues, setLeagues] = useState([]);
   const [imageSize, setImageSize] = useState(0);
+  const [regionChoice, setRegionChoice] = useState("");
+  const [leagueChoice, setLeagueChoice] = useState("");
 
   var image = document.getElementById("frame");
 
@@ -39,6 +41,7 @@ const TeamSelector = () => {
       }
         `;
     const leagueData = await API.graphql(graphqlOperation(leagueByRegion));
+    console.log(leagueData.data.listLeagues.items);
     setLeagues(leagueData.data.listLeagues.items);
   };
 
@@ -68,27 +71,83 @@ const TeamSelector = () => {
             <p style={{ color: category === "Region" ? "#BBA59A" : "#4C4E52" }}>
               Region
             </p>
-            <img src={require("../images/arrow-icon.png")}></img>
+            <img src={require("../images/arrow-icon.png")} alt="arrow"></img>
             <p style={{ color: category === "League" ? "#BBA59A" : "#4C4E52" }}>
               League
             </p>
-            <img src={require("../images/arrow-icon.png")}></img>
+            <img src={require("../images/arrow-icon.png")} alt="arrow"></img>
             <p style={{ color: category === "Teams" ? "#BBA59A" : "#4C4E52" }}>
               Teams
             </p>
           </div>
+
           <div className="region">
-            {regions.map((region) => (
-              <div key={region.id}>
-                <p
-                  onClick={() => {
-                    fetchLeagues(region.id);
-                  }}
-                >
-                  {region.id}
-                </p>
-              </div>
-            ))}
+            {category === "Region" ? (
+              <>
+                {regions.map((region) => (
+                  <div key={region.id}>
+                    <p
+                      onClick={() => {
+                        setRegionChoice(region.id);
+                      }}
+                      style={{
+                        color: regionChoice === region.id ? "#CBAF86" : null,
+                      }}
+                    >
+                      {region.id}
+                    </p>
+                  </div>
+                ))}
+              </>
+            ) : category === "League" ? (
+              <>
+                {leagues.map((league) => (
+                  <div
+                    key={league.id}
+                    style={{
+                      flexDirection: "row",
+                      display: "flex",
+                      alignContent: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <p
+                      onClick={() => {
+                        setLeagueChoice(league.id);
+                      }}
+                      style={{
+                        color: leagueChoice === league.id ? "#CBAF86" : null,
+                      }}
+                    >
+                      {league.league_name}
+                    </p>
+                    <img
+                      src={league.image_url}
+                      alt="league"
+                      style={{
+                        width: imageSize / 10,
+                        height: imageSize / 10,
+                        marginTop: imageSize / 30,
+                      }}
+                    ></img>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+
+          <div className="nextButton">
+            <img
+              src={require("../images/next-button.png")}
+              style={{ width: imageSize / 4 }}
+              onClick={() => {
+                fetchLeagues(regionChoice);
+                setCategory("League");
+              }}
+              alt="next"
+            ></img>
           </div>
         </div>
       </div>

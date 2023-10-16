@@ -74,3 +74,19 @@
 .region p:hover{
     color: grey;
 }
+
+.nextButton{
+    position: absolute;
+    top: 85%;
+    left: 70%;
+}
+
+.nextButton img{
+    cursor: pointer;
+}
+
+.nextButton img:hover{
+    opacity: 0.8;
+}
+
+
