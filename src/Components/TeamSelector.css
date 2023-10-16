@@ -62,16 +62,16 @@
     /* Add some spacing around the image if desired */
 }
 
-.region{
+.content{
     flex:8;
     overflow-y: scroll;
 }
 
-.region p{
+.content p{
     cursor: pointer;
 }
 
-.region p:hover{
+.content p:hover{
     color: grey;
 }
 
@@ -87,6 +87,13 @@
 
 .nextButton img:hover{
     opacity: 0.8;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-image: linear-gradient(to right, #CBAF86, #957557,#957C57,#685931, #D2B100, #695611);
+    margin-top: -5px;
 }
 
 

@@ -6,13 +6,13 @@ import "./TeamSelector.css";
 const TeamSelector = () => {
   const [regions, setRegions] = useState([]);
   const [category, setCategory] = useState("Region");
-  const [itemIndex, setItemIndex] = useState(-1);
+  const [rankingTeam, setRankingTeam] = useState({});
   const [leagues, setLeagues] = useState([]);
   const [imageSize, setImageSize] = useState(0);
   const [regionChoice, setRegionChoice] = useState("");
   const [leagueChoice, setLeagueChoice] = useState("");
-
-  var image = document.getElementById("frame");
+  const [teams, setTeams] = useState({});
+  const [teamIndex, setTeamIndex] = useState([]);
 
   const setSize = function (e) {
     if (e.target.width < e.target.height) {
@@ -28,6 +28,10 @@ const TeamSelector = () => {
   };
 
   const fetchLeagues = async (region) => {
+    if (region === "") {
+      setLeagues([]);
+      return;
+    }
     const leagueByRegion = `
             query MyQuery {
         listLeagues(filter: {region_id: {eq: "${region}"}}) {
@@ -41,13 +45,54 @@ const TeamSelector = () => {
       }
         `;
     const leagueData = await API.graphql(graphqlOperation(leagueByRegion));
-    console.log(leagueData.data.listLeagues.items);
     setLeagues(leagueData.data.listLeagues.items);
+  };
+
+  const fetchTeams = async (league) => {
+    if (league === "") {
+      setTeams({});
+      return;
+    }
+    const teamByLeague = `
+          query MyQuery {
+        listTournaments(filter: {league_id: {eq: ${league}}}) {
+          items {
+            teams {
+              items {
+                team {
+                  id
+                  team_name
+                  acronym
+                }
+              }
+            }
+          }
+        }
+      }
+      `;
+    const teamData = await API.graphql(graphqlOperation(teamByLeague));
+    const teamList = {};
+    teamData.data.listTournaments.items.forEach((element) => {
+      element.teams.items.forEach((team) => {
+        teamList[team.team.id] = {
+          team_name: team.team.team_name,
+          acronym: team.team.acronym,
+        };
+      });
+    });
+    setTeams(teamList);
+  };
+
+  const updateRankingTeam = (team) => {
+    setRankingTeam({ ...rankingTeam, team: teams[team] });
+    setTeamIndex([...teamIndex, team]);
   };
 
   useEffect(() => {
     fetchRegions();
-  }, []);
+    fetchLeagues(regionChoice);
+    fetchTeams(leagueChoice);
+  }, [leagueChoice, regionChoice]);
 
   return (
     <div className="frame-container">
@@ -68,20 +113,44 @@ const TeamSelector = () => {
           }}
         >
           <div className="tabs">
-            <p style={{ color: category === "Region" ? "#BBA59A" : "#4C4E52" }}>
+            <p
+              style={{
+                color: category === "Region" ? "#BBA59A" : "#4C4E52",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setCategory("Region");
+              }}
+            >
               Region
             </p>
             <img src={require("../images/arrow-icon.png")} alt="arrow"></img>
-            <p style={{ color: category === "League" ? "#BBA59A" : "#4C4E52" }}>
+            <p
+              style={{
+                color: category === "League" ? "#BBA59A" : "#4C4E52",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setCategory("League");
+              }}
+            >
               League
             </p>
             <img src={require("../images/arrow-icon.png")} alt="arrow"></img>
-            <p style={{ color: category === "Teams" ? "#BBA59A" : "#4C4E52" }}>
+            <p
+              style={{
+                color: category === "Teams" ? "#BBA59A" : "#4C4E52",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setCategory("Teams");
+              }}
+            >
               Teams
             </p>
           </div>
 
-          <div className="region">
+          <div className="content">
             {category === "Region" ? (
               <>
                 {regions.map((region) => (
@@ -96,58 +165,87 @@ const TeamSelector = () => {
                     >
                       {region.id}
                     </p>
+                    <hr />
                   </div>
                 ))}
               </>
             ) : category === "League" ? (
               <>
                 {leagues.map((league) => (
+                  <div key={league.id}>
+                    <div
+                      style={{
+                        flexDirection: "row",
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <p
+                        onClick={() => {
+                          setLeagueChoice(league.id);
+                        }}
+                        style={{
+                          color: leagueChoice === league.id ? "#CBAF86" : null,
+                        }}
+                      >
+                        {league.league_name}
+                      </p>
+                      <img
+                        src={league.image_url}
+                        alt="league"
+                        style={{
+                          width: imageSize / 10,
+                          height: imageSize / 10,
+                          marginTop: imageSize / 40,
+                        }}
+                      ></img>
+                    </div>
+                    <hr />
+                  </div>
+                ))}
+              </>
+            ) : (
+              <>
+                {Object.keys(teams).map((team) => (
                   <div
-                    key={league.id}
+                    key={team}
                     style={{
-                      flexDirection: "row",
-                      display: "flex",
                       alignContent: "center",
                       justifyContent: "space-between",
                     }}
                   >
                     <p
                       onClick={() => {
-                        setLeagueChoice(league.id);
+                        updateRankingTeam(team);
                       }}
                       style={{
-                        color: leagueChoice === league.id ? "#CBAF86" : null,
+                        color: teamIndex.includes(team) ? "#CBAF86" : null,
                       }}
                     >
-                      {league.league_name}
+                      {teams[team].team_name}
                     </p>
-                    <img
-                      src={league.image_url}
-                      alt="league"
-                      style={{
-                        width: imageSize / 10,
-                        height: imageSize / 10,
-                        marginTop: imageSize / 30,
-                      }}
-                    ></img>
+                    <hr />
                   </div>
                 ))}
               </>
-            ) : (
-              <></>
             )}
           </div>
 
           <div className="nextButton">
-            <img
-              src={require("../images/next-button.png")}
-              style={{ width: imageSize / 4 }}
-              onClick={() => {
-                fetchLeagues(regionChoice);
-                setCategory("League");
-              }}
-              alt="next"
-            ></img>
+            {category === "Teams" ? null : (
+              <img
+                src={require("../images/next-button.png")}
+                style={{ width: imageSize / 4 }}
+                onClick={() => {
+                  if (category === "Region") {
+                    setCategory("League");
+                  } else if (category === "League") {
+                    setCategory("Teams");
+                  }
+                }}
+                alt="next"
+              ></img>
+            )}
           </div>
         </div>
       </div>
