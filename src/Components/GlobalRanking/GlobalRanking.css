@@ -13,13 +13,20 @@
     text-align: center;
 }
 
+.controls-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
 .dropdown {
     margin-left: 5rem;
     position: relative;
     width: fit-content;
     align-items: center;
     display: flex;
-    gap: 1rem;
 }
 
 .dropdown-button {
@@ -63,13 +70,13 @@
 .dropdown-options {
     width: 9.375rem;
     position: absolute;
-    top: calc(3rem + 2rem + 8px);
-    left: 1rem;
+    top: calc(3rem + 2rem);
     box-sizing: border-box;
-    z-index: 1;
+    z-index: 10;
 }
 
 .dropdown-item {
+    cursor: pointer;
     display: block;
     width: 9.375rem;
     padding: 0.5rem;
@@ -119,4 +126,8 @@
     height: 20px;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.list-wrapper {
+    margin: 5rem;
 }
