@@ -1,5 +1,5 @@
 .home-container {
-    font-family: 'Iceland', sans-serif;
+    font-family: "Iceland", sans-serif;
 }
 
 .home-screen {
@@ -26,18 +26,15 @@
     font-weight: normal;
     font-size: 4.4em;
     margin-bottom: 10px; /* Adjust as needed */
-    text-shadow:
-        2px 2px 5px #fff,
-        -2px -2px 5px #fff,
-        2px -2px 5px #fff,
+    text-shadow: 2px 2px 5px #fff, -2px -2px 5px #fff, 2px -2px 5px #fff,
         -2px 2px 5px #fff;
 }
 
 .custom-button {
-    background: url('../images/HomeButton.png') no-repeat center center;
+    background: url("../images/HomeButton.png") no-repeat center center;
     background-size: cover; /* This will make the image cover the entire button */
     border: none;
-    min-width: 400px; 
+    min-width: 400px;
     height: 80px; /* Adjust according to your image's height */
     color: #fff; /* Adjust the color of the text */
     font-size: 1.6em; /* Adjust the size of the text */
@@ -54,33 +51,25 @@
 }
 
 .scroll-button {
-    background: url('../images/diamond-icon.png') no-repeat center center; 
+    background: url("../images/diamond-icon.png") no-repeat center center;
     background-size: contain;
     width: 60px; /* Adjust as per the size of your custom image */
     height: 60px; /* Adjust as per the size of your custom image */
-    border: none; 
+    border: none;
     cursor: pointer;
     position: absolute;
-    bottom: 30px; 
-    left: 50%;  /* To center the button horizontally */
-    transform: translateX(-50%);  /* To center the button horizontally */
-    transition: text-shadow 0.3s;
-}
-
-.scroll-button:hover {
-    text-shadow: 2px 2px 5px #fff, 
-                 -2px -2px 5px #fff, 
-                 2px -2px 5px #fff, 
-                 -2px 2px 5px #fff; /* This adds text-shadow around the text */
+    bottom: 30px;
+    left: 50%; /* To center the button horizontally */
+    transform: translateX(-50%); /* To center the button horizontally */
 }
 
 .scroll-button::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 50%;  /* Positioning arrow in the center of the button */
-    left: 50%;  /* Positioning arrow in the center of the button */
-    transform: translate(-50%, -60%);  /* Centering the arrow */
-    background: url('../images/downArrow.svg') no-repeat center center;
+    top: 50%; /* Positioning arrow in the center of the button */
+    left: 50%; /* Positioning arrow in the center of the button */
+    transform: translate(-50%, -50%); /* Centering the arrow */
+    background: url("../images/downArrow.svg") no-repeat center center;
     background-size: contain;
     width: 40px; /* Adjust as per the size of your arrow image */
     height: 40px; /* Adjust as per the size of your arrow image */
@@ -88,27 +77,37 @@
 }
 
 .scroll-button:hover::before {
-    transform: translate(-50%, -40%);  /* This will move the arrow slightly down */
+    transform: translate(
+        -50%,
+        -40%
+    ); /* This will move the arrow slightly down */
 }
 
 .scroll-button:hover::after {
-    content: 'Scroll to Ranking';
+    content: "Scroll to Ranking";
     position: absolute;
-    top: 100%;  /* positions the message just below the button */
-    left: 50%;  /* centers the message horizontally relative to the button */
-    transform: translateX(-50%);  /* shifts the message to the left by half its width to ensure it's centered */
-    background-color: rgba(0, 0, 0, 0.6);  /* slightly transparent black background for the message */
+    top: 100%; /* positions the message just below the button */
+    left: 50%; /* centers the message horizontally relative to the button */
+    transform: translateX(
+        -50%
+    ); /* shifts the message to the left by half its width to ensure it's centered */
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.6
+    ); /* slightly transparent black background for the message */
     color: white;
-    padding: 5px 10px;  /* space around the text */
-    border-radius: 5px;  /* rounded corners */
-    font-size: 0.9em;  /* size of the text */
-    white-space: nowrap;  /* prevents the text from wrapping to the next line */
-    transition: 0.2s;  /* smooth appearance */
-    opacity: 0;  /* starts off invisible... */
+    padding: 5px 10px; /* space around the text */
+    border-radius: 5px; /* rounded corners */
+    font-size: 0.9em; /* size of the text */
+    white-space: nowrap; /* prevents the text from wrapping to the next line */
+    transition: 0.2s; /* smooth appearance */
+    opacity: 0; /* starts off invisible... */
     pointer-events: none; /* ensures the tooltip doesn't interfere with click events */
 }
 
 .scroll-button:hover::after {
-    opacity: 1;  /* ... but becomes fully visible on hover */
-    top: 80%;  /* moves the message slightly upwards on hover for a subtle animation effect */
+    opacity: 1; /* ... but becomes fully visible on hover */
+    top: 80%; /* moves the message slightly upwards on hover for a subtle animation effect */
 }

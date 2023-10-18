@@ -1,0 +1,82 @@
+.custom-list-container {
+    overflow-x: hidden;
+    width: 40rem;
+    max-height: 50rem;
+    padding: 4rem;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom-list {
+    overflow-x: hidden;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+}
+
+.custom-list-frame {
+    position: absolute;
+    top: -120px;
+    left: -90px;
+    width: 70rem;
+    height: 65rem;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.load-more-btn {
+    background: url("../../images/btn-load-more.png") no-repeat center center;
+    background-size: cover;
+    border: none;
+    width: 18.75rem;
+    height: 10.625rem;
+    cursor: pointer;
+}
+
+/* LIST ITEM */
+.card {
+    cursor: pointer;
+    width: 28.125rem;
+    height: 6.875rem;
+    background-image: url(../../images/list-item.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* More pronounced shadow for depth */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.card-content h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.card-content p {
+    margin: 5px 0 0;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
