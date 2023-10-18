@@ -1,6 +1,8 @@
 /* styles.css */
 body {
-    background-color: black;
+    background-image: url("./Background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0 !important;
     padding: 0 !important;
 }

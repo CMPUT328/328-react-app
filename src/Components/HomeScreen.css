@@ -2,6 +2,11 @@
     font-family: "Iceland", sans-serif;
 }
 
+.home-screen {
+    margin-top: -30px;
+    /* Adjust based on your need */
+}
+
 .container {
     height: 100vh;
     display: flex;
@@ -68,6 +73,14 @@
     background-size: contain;
     width: 40px; /* Adjust as per the size of your arrow image */
     height: 40px; /* Adjust as per the size of your arrow image */
+    transition: transform 0.3s;
+}
+
+.scroll-button:hover::before {
+    transform: translate(
+        -50%,
+        -40%
+    ); /* This will move the arrow slightly down */
 }
 
 .scroll-button:hover::after {

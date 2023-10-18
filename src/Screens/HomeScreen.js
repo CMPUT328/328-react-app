@@ -43,7 +43,7 @@ function HomeScreen() {
             </div>
 
             <div className="container" ref={secondContainerRef}>
-                <GlobalRanking />
+                {/* Content for second container */}
             </div>
         </div>
     );
