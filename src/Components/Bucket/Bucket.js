@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Bucket.css";
 
 const bucketRatio = 499 / 692;
@@ -34,9 +34,10 @@ const Bucket = ({ getBucket, setBucket }) => {
       <div className="gap"></div>
       <div className="group-frame-container">
         <img
-          src={require("../images/group-frame.png")}
+          src={require("../../images/group-frame.png")}
           className="group-frame-image"
           onLoad={setSize}
+          alt="group-frame"
         ></img>
         <div
           className="bucket-content-container"
@@ -61,7 +62,7 @@ const Bucket = ({ getBucket, setBucket }) => {
         </div>
         <div className="button-container">
           <img
-            src={require("../images/enter-button.png")}
+            src={require("../../images/enter-button.png")}
             className="enter-button"
             alt="next"
             style={{
