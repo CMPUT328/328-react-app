@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
-import { listRegions } from "../graphql/queries";
+import { listRegions } from "../../graphql/queries";
 import "./TeamSelector.css";
 
 const TeamSelector = ({ setBucket, getBucket }) => {
@@ -98,7 +98,7 @@ const TeamSelector = ({ setBucket, getBucket }) => {
       <div className="part1"></div>
       <div className="part2">
         <img
-          src={require("../images/frame.png")}
+          src={require("../../images/frame.png")}
           alt="frame"
           className="responsive-image"
           id="frame"
@@ -124,7 +124,7 @@ const TeamSelector = ({ setBucket, getBucket }) => {
             >
               Region
             </p>
-            <img src={require("../images/arrow-icon.png")} alt="arrow"></img>
+            <img src={require("../../images/arrow-icon.png")} alt="arrow"></img>
             <p
               style={{
                 color: category === "League" ? "#BBA59A" : "#4C4E52",
@@ -136,7 +136,7 @@ const TeamSelector = ({ setBucket, getBucket }) => {
             >
               League
             </p>
-            <img src={require("../images/arrow-icon.png")} alt="arrow"></img>
+            <img src={require("../../images/arrow-icon.png")} alt="arrow"></img>
             <p
               style={{
                 color: category === "Teams" ? "#BBA59A" : "#4C4E52",
@@ -234,7 +234,7 @@ const TeamSelector = ({ setBucket, getBucket }) => {
           <div className="nextButton">
             {category === "Teams" ? null : (
               <img
-                src={require("../images/next-button.png")}
+                src={require("../../images/next-button.png")}
                 style={{ width: imageSize / 4 }}
                 onClick={() => {
                   if (category === "Region") {
