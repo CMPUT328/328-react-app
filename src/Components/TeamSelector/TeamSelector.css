@@ -1,9 +1,7 @@
 .frame-container{
     flex: 1;
     position: relative;
-    margin-bottom: 5%;
     color: white;
-    /* needed for the absolute positioning of the image */
 }
 
 .content-container {
