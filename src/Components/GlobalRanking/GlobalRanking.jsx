@@ -40,6 +40,17 @@ const GlobalRanking = () => {
         };
     }, [dropdownVisible]);
 
+    const allItems = [
+        { rank: 1, name: "Adnan", region: "Dubai" },
+        { rank: 2, name: "Adnan", region: "Dubai" },
+        { rank: 3, name: "Adnan", region: "Dubai" },
+        { rank: 4, name: "Adnan", region: "Dubai" },
+        { rank: 5, name: "John", region: "New York" },
+        { rank: 6, name: "John", region: "New York" },
+        { rank: 7, name: "John", region: "New York" },
+        { rank: 8, name: "John", region: "New York" },
+    ];
+
     return (
         <div className="background-image">
             <h1 className="header"> Global Ranking</h1>

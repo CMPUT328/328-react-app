@@ -21,9 +21,10 @@ const CustomList = ({ allItems, itemsPerPage }) => {
                 {displayedItems.map((item, index) => (
                     <ListItem
                         key={index}
-                        image={item.image}
-                        title={item.title}
-                        description={item.description}
+                        index={index}
+                        rank={item.rank}
+                        name={item.name}
+                        region={item.region}
                     />
                 ))}
                 {displayedItems.length < allItems.length && (
