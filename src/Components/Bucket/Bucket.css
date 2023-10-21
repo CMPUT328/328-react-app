@@ -28,6 +28,8 @@
   color: white;
   display: flex;
   margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
   overflow-y: scroll;
 }
 
@@ -46,7 +48,7 @@
   height: 9%;
   width: 7%;
   position: absolute;
-  margin-top: 23%;
+  margin-top: 20%;
   margin-left: 34%;
   cursor: pointer;
 }
