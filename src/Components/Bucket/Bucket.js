@@ -33,12 +33,11 @@ const Bucket = ({ getBucket, setBucket }) => {
     <div className="bucket-container">
       <div className="gap"></div>
       <div className="group-frame-container">
-        <img
-          src={require("../../images/group-frame.png")}
+        <div
           className="group-frame-image"
           onLoad={setSize}
           alt="group-frame"
-        ></img>
+        ></div>
         <div
           className="bucket-content-container"
           style={{
