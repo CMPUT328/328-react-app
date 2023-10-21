@@ -1,7 +1,9 @@
 import React from "react";
 
+import GlobalRanking from "../Components/GlobalRanking/GlobalRanking";
+
 const GlobalRankingScreen = () => {
-  return <h1>GlobalRankingScreen!</h1>;
+  return <GlobalRanking />;
 };
 
 export default GlobalRankingScreen;

@@ -41,7 +41,7 @@ const GlobalRanking = () => {
     }, [dropdownVisible]);
 
     return (
-        <div className="background-image">
+        <div>
             <h1 className="header"> Global Ranking</h1>
             <div className="controls-wrapper">
                 <div className="dropdown">
