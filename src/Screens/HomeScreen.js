@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "../Components/HomeScreen.css"; // Include styles
 import Homebg from "../images/HomeBg.png";
+import Secondbg from "../images/bg-globalRanking.png"
 
 function HomeScreen() {
   const secondContainerRef = useRef(null);
@@ -10,7 +11,7 @@ function HomeScreen() {
   };
 
   return (
-    <div className="home-container">
+    <div>
       <div
         className="container"
         style={{
@@ -32,7 +33,14 @@ function HomeScreen() {
         <button className="scroll-button" onClick={handleScroll}></button>
       </div>
 
-      <div className="container" ref={secondContainerRef}>
+      <div 
+        className="container" 
+        style={{
+          backgroundImage: `url(${Secondbg})`,
+          backgroundSize: "cover",
+        }}
+        ref={secondContainerRef}
+      >
         
       </div>
     </div>
