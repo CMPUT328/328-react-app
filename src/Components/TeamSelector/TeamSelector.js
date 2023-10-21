@@ -95,7 +95,6 @@ const TeamSelector = ({ setBucket, getBucket }) => {
 
   return (
     <div className="frame-container">
-      <div className="part1"></div>
       <div className="part2">
         <div
           alt="frame"
