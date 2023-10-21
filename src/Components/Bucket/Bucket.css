@@ -1,6 +1,7 @@
 .bucket-container{
   flex: 1;
-  display: relative;
+  display: flex;
+
 }
 
 /* Making the image responsive */
@@ -9,23 +10,26 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
-  width: 100%;
-}
-
-.gap {
-  flex: 1;
-  position: relative;
-  /* needed for the absolute positioning of the image */
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
 }
 
 .bucket-content {
-  flex: 8;
-  overflow-y: scroll;
-  font-size: large;
-  padding-bottom: 10px;
+  font-size: x-large;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: white;
+  max-height: 30vh;
 }
 
+.bucket-content-container{
+  flex-direction: column;
+  color: white;
+  display: flex;
+  margin-top: 10%;
+  overflow-y: scroll;
+}
 
 .bucket-content p {
   cursor: pointer;
@@ -34,12 +38,15 @@
   color: darkred;
 }
 
-.button-enter{
+
+.enter-button{
   background-image: url("../../images/enter-button.png");
   background-size: contain;
   background-repeat: no-repeat;
-  height: 10%;
-  width: 10%;
-  cursor: pointer;
+  height: 9%;
+  width: 7%;
   position: absolute;
+  margin-top: 23%;
+  margin-left: 34%;
+  cursor: pointer;
 }

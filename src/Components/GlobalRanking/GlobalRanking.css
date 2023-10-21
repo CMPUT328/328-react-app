@@ -71,7 +71,7 @@
     width: 9.375rem;
     position: absolute;
     top: calc(3rem + 2rem);
-    box-sizing: border-box;
+
     z-index: 10;
 }
 
