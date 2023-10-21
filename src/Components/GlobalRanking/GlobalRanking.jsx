@@ -51,60 +51,66 @@ const GlobalRanking = () => {
     fetchRegions();
   }, []);
 
-  return (
-    <div className="background-image">
-      <h1 className="header"> Global Ranking</h1>
-      <div className="controls-wrapper">
-        <div className="dropdown">
-          <label htmlFor="dropdown-button"></label>
-          <button
-            className="dropdown-button"
-            id="dropdown-button"
-            title={selectedRegion}
-            onClick={toggleDropdown}
-          >
-            <span className="dropdown-button-text">{selectedRegion}</span>
-            <div className={`arrow ${dropdownVisible ? "arrow-up" : ""}`} />
-          </button>
-          <div
-            className="dropdown-options"
-            style={{ display: dropdownVisible ? "block" : "none" }}
-          >
-            {regions.map((region) => (
-              <React.Fragment key={region.id}>
-                <label
-                  className="dropdown-item"
-                  htmlFor={region.id}
-                  title={region.id}
-                  onClick={() => handleRegionSelect(region.id)}
-                >
-                  {region.id}
-                </label>
-                <input
-                  className="option"
-                  id={region.id}
-                  type="radio"
-                  name={region.id}
-                  value={region.id}
-                ></input>
-              </React.Fragment>
-            ))}
-          </div>
+    return (
+        <div>
+            <h1 className="header"> Global Ranking</h1>
+            <div className="controls-wrapper">
+                <div className="dropdown">
+                    <label htmlFor="dropdown-button"></label>
+                    <button
+                        className="dropdown-button"
+                        id="dropdown-button"
+                        title={selectedRegion}
+                        onClick={toggleDropdown}
+                    >
+                        <span className="dropdown-button-text">
+                            {selectedRegion}
+                        </span>
+                        <div
+                            className={`arrow ${
+                                dropdownVisible ? "arrow-up" : ""
+                            }`}
+                        />
+                    </button>
+                    <div
+                        className="dropdown-options"
+                        style={{ display: dropdownVisible ? "block" : "none" }}
+                    >
+                        {regions.map((region) => (
+                            <React.Fragment key={region}>
+                                <label
+                                    className="dropdown-item"
+                                    htmlFor={region}
+                                    title={region}
+                                    onClick={() => handleRegionSelect(region)}
+                                >
+                                    {region}
+                                </label>
+                                <input
+                                    className="option"
+                                    id={region}
+                                    type="radio"
+                                    name={region}
+                                    value={region}
+                                ></input>
+                            </React.Fragment>
+                        ))}
+                    </div>
+                </div>
+                <div className="search-wrapper">
+                    <input
+                        type="search"
+                        className="searchbox"
+                        placeholder="Search Team"
+                    />
+                    <div className="search-icon" />
+                </div>
+            </div>
+            <div className="list-wrapper">
+                <CustomList allItems={allItems} itemsPerPage={5} />
+            </div>
         </div>
-        <div className="search-wrapper">
-          <input
-            type="search"
-            className="searchbox"
-            placeholder="Search Team"
-          />
-          <div className="search-icon" />
-        </div>
-      </div>
-      <div className="list-wrapper">
-        <CustomList allItems={allItems} itemsPerPage={5} />
-      </div>
-    </div>
-  );
+    );
 };
 
 export default GlobalRanking;

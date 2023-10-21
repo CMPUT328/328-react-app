@@ -2,11 +2,6 @@ import React, { useRef } from "react";
 import "../Components/HomeScreen.css"; // Include styles
 import Homebg from "../images/HomeBg.png";
 
-import customScrollButton from "../images/diamond-icon.png";
-import { ReactComponent as DownArrow } from "../images/downArrow.svg";
-
-import GlobalRanking from "../Components/GlobalRanking/GlobalRanking";
-
 function HomeScreen() {
   const secondContainerRef = useRef(null);
 
@@ -38,7 +33,7 @@ function HomeScreen() {
       </div>
 
       <div className="container" ref={secondContainerRef}>
-        <GlobalRanking />
+        
       </div>
     </div>
   );
