@@ -1,15 +1,6 @@
 .bucket-container{
   flex: 1;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-}
-
-.group-frame-container{
-  flex:20;
-  position: relative;
-
+  display: relative;
 }
 
 /* Making the image responsive */
@@ -18,8 +9,8 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
-  width: 80%;
+  height: 100%;
+  width: 100%;
 }
 
 .gap {
@@ -27,24 +18,6 @@
   position: relative;
   /* needed for the absolute positioning of the image */
 }
-
-.bucket-content-container{
-  display: flex;
-  flex-direction: column;
-  flex:1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  /* This ensures content is on top of the image */
-  color: white;
-  /* Optional, adjust as desired */
-  margin: auto;
-}
-
-
 
 .bucket-content {
   flex: 8;
@@ -54,7 +27,6 @@
 }
 
 
-
 .bucket-content p {
   cursor: pointer;
 }
@@ -62,6 +34,12 @@
   color: darkred;
 }
 
-.button-container:hover{
-  opacity: 0.8;
+.button-enter{
+  background-image: url("../../images/enter-button.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 10%;
+  width: 10%;
+  cursor: pointer;
+  position: absolute;
 }

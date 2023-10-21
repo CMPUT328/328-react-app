@@ -95,21 +95,8 @@ const TeamSelector = ({ setBucket, getBucket }) => {
 
   return (
     <div className="frame-container">
-      <div className="part2">
-        <div
-          alt="frame"
-          className="responsive-image"
-          id="frame"
-          onLoad={setSize}
-        />
-        <div
-          className="content-container"
-          style={{
-            width: imageSize,
-            height: imageSize,
-            paddingBottom: imageSize / 7,
-          }}
-        >
+      <div alt="frame" className="responsive-image" id="frame" onLoad={setSize}>
+        <div className="content-container">
           <div className="tabs">
             <p
               style={{
@@ -191,11 +178,7 @@ const TeamSelector = ({ setBucket, getBucket }) => {
                       <img
                         src={league.image_url}
                         alt="league"
-                        style={{
-                          width: imageSize / 10,
-                          height: imageSize / 10,
-                          marginTop: imageSize / 40,
-                        }}
+                        className="league-icon"
                       ></img>
                     </div>
                     <hr />
@@ -228,23 +211,19 @@ const TeamSelector = ({ setBucket, getBucket }) => {
               </>
             )}
           </div>
-
-          <div className="nextButton">
-            {category === "Teams" ? null : (
-              <img
-                src={require("../../images/next-button.png")}
-                style={{ width: imageSize / 4 }}
-                onClick={() => {
-                  if (category === "Region") {
-                    setCategory("League");
-                  } else if (category === "League") {
-                    setCategory("Teams");
-                  }
-                }}
-                alt="next"
-              ></img>
-            )}
-          </div>
+          {category === "Teams" ? null : (
+            <div
+              className="nextButton"
+              onClick={() => {
+                if (category === "Region") {
+                  setCategory("League");
+                } else if (category === "League") {
+                  setCategory("Teams");
+                }
+              }}
+              alt="next"
+            />
+          )}
         </div>
       </div>
     </div>

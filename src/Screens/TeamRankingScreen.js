@@ -29,7 +29,10 @@ const TeamRankingScreen = () => {
   return (
     <div className="teamRankingScreen">
       <div className="leaderBoard">
-        <CustomList allItems={allItems} itemsPerPage={5} />
+        <h1 className="title-teamRanking">Team Ranking</h1>
+        <div className="list-Container">
+          <CustomList allItems={allItems} itemsPerPage={5} />
+        </div>
       </div>
       <div className="teamRankingInput">
         <TeamSelector setBucket={setBucket} getBucket={getBucket} />

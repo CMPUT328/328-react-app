@@ -31,13 +31,7 @@ const Bucket = ({ getBucket, setBucket }) => {
 
   return (
     <div className="bucket-container">
-      <div className="gap"></div>
-      <div className="group-frame-container">
-        <div
-          className="group-frame-image"
-          onLoad={setSize}
-          alt="group-frame"
-        ></div>
+      <div className="group-frame-image" onLoad={setSize} alt="group-frame">
         <div
           className="bucket-content-container"
           style={{
@@ -59,24 +53,7 @@ const Bucket = ({ getBucket, setBucket }) => {
             })}
           </div>
         </div>
-        <div className="button-container">
-          <img
-            src={require("../../images/enter-button.png")}
-            className="enter-button"
-            alt="next"
-            style={{
-              top: topStart + height * 0.7 + 20,
-              left: leftStart + width - width / 5 - 30,
-              width: width / 5,
-              zIndex: 1,
-              position: "absolute",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              console.log(getBucket());
-            }}
-          ></img>
-        </div>
+        <div className="button-enter"></div>
       </div>
     </div>
   );
