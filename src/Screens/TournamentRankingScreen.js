@@ -1,7 +1,11 @@
 import React from "react";
-
+import TournamentRanking from "../Components/TournamentRanking/TournamentRanking";
 const TournamentRankingScreen = () => {
-    return <h1>Tournament Ranking Screen!</h1>;
+    return (
+        <>
+            <TournamentRanking />
+        </>
+    );
 };
 
 export default TournamentRankingScreen;

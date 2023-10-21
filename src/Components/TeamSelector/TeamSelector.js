@@ -97,8 +97,7 @@ const TeamSelector = ({ setBucket, getBucket }) => {
     <div className="frame-container">
       <div className="part1"></div>
       <div className="part2">
-        <img
-          src={require("../../images/frame.png")}
+        <div
           alt="frame"
           className="responsive-image"
           id="frame"

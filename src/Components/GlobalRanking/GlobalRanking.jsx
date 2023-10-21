@@ -1,44 +1,55 @@
 import React, { useState, useEffect } from "react";
 import "./GlobalRanking.css";
 import CustomList from "../CustomList/CustomList";
+import { API, graphqlOperation } from "aws-amplify";
+import { listRegions } from "../../graphql/queries";
 
 const allItems = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "item 5",
-    "item 6",
-    "item 7",
-    "item 8",
+  "Item 1",
+  "Item 2",
+  "Item 3",
+  "Item 4",
+  "item 5",
+  "item 6",
+  "item 7",
+  "item 8",
 ];
-const regions = ["London", "Tokyo", "Beijing", "Manchester"];
 
 const GlobalRanking = () => {
-    const [dropdownVisible, setDropdownVisible] = useState(false);
-    const [selectedRegion, setSelectedRegion] = useState("Region");
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [selectedRegion, setSelectedRegion] = useState("Region");
+  const [regions, setRegions] = useState([]);
 
-    const toggleDropdown = () => {
-        setDropdownVisible((prevState) => !prevState);
-    };
-    const handleRegionSelect = (region) => {
-        setSelectedRegion(region);
+  const fetchRegions = async () => {
+    const regionData = await API.graphql(graphqlOperation(listRegions));
+    setRegions(regionData.data.listRegions.items);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownVisible((prevState) => !prevState);
+  };
+  const handleRegionSelect = (region) => {
+    setSelectedRegion(region);
+    setDropdownVisible(false);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownVisible && !event.target.closest(".dropdown-button")) {
         setDropdownVisible(false);
+      }
     };
 
-    useEffect(() => {
-        const handleOutsideClick = (event) => {
-            if (dropdownVisible && !event.target.closest(".dropdown-button")) {
-                setDropdownVisible(false);
-            }
-        };
+    document.addEventListener("click", handleOutsideClick);
 
-        document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [dropdownVisible]);
 
-        return () => {
-            document.removeEventListener("click", handleOutsideClick);
-        };
-    }, [dropdownVisible]);
+  useEffect(() => {
+    fetchRegions();
+  }, []);
 
     return (
         <div>
