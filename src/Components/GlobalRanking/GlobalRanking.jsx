@@ -2,16 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./GlobalRanking.css";
 import CustomList from "../CustomList/CustomList";
 
-const allItems = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "item 5",
-    "item 6",
-    "item 7",
-    "item 8",
-];
 const regions = ["London", "Tokyo", "Beijing", "Manchester"];
 
 const GlobalRanking = () => {
@@ -25,6 +15,7 @@ const GlobalRanking = () => {
         setSelectedRegion(region);
         setDropdownVisible(false);
     };
+    const [selectedTeam, setSelectedTeam] = useState(null);
 
     useEffect(() => {
         const handleOutsideClick = (event) => {
@@ -41,14 +32,24 @@ const GlobalRanking = () => {
     }, [dropdownVisible]);
 
     const allItems = [
-        { rank: 1, name: "Adnan", region: "Dubai" },
-        { rank: 2, name: "Adnan", region: "Dubai" },
-        { rank: 3, name: "Adnan", region: "Dubai" },
-        { rank: 4, name: "Adnan", region: "Dubai" },
-        { rank: 5, name: "John", region: "New York" },
-        { rank: 6, name: "John", region: "New York" },
-        { rank: 7, name: "John", region: "New York" },
-        { rank: 8, name: "John", region: "New York" },
+        {
+            rank: 1,
+            name: "Adnan",
+            region: "Dubai",
+            members: ["Ali", "Zara", "Ahmed"],
+        },
+        {
+            rank: 2,
+            name: "Brandon",
+            region: "Dubai",
+            members: ["Mike", "Linda"],
+        },
+        {
+            rank: 3,
+            name: "Charlie",
+            region: "London",
+            members: ["Chris", "Anna", "Sam"],
+        },
     ];
 
     return (
@@ -106,8 +107,38 @@ const GlobalRanking = () => {
                     <div className="search-icon" />
                 </div>
             </div>
-            <div className="list-wrapper">
-                <CustomList allItems={allItems} itemsPerPage={5} />
+            <div className="list-and-info-container">
+                <div className="list-wrapper">
+                    <CustomList
+                        allItems={allItems}
+                        itemsPerPage={5}
+                        onTeamSelect={setSelectedTeam}
+                    />
+                </div>
+                <img
+                    src={require("../../images/team-info-frame.png")}
+                    alt="team-info"
+                    className="team-info"
+                />
+                {selectedTeam && (
+                    <div className="team-details">
+                        <h2 className="team-info-name">{selectedTeam.name}</h2>
+                        <p className="team-info-rank">
+                            Rank: {selectedTeam.rank}
+                        </p>
+                        <p className="team-info-rank">
+                            Region: {selectedTeam.region}
+                        </p>
+                        <div className="team-members">
+                            <h3>Members:</h3>
+                            <ul>
+                                {selectedTeam.members.map((member) => (
+                                    <li key={member}>{member}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
