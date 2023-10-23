@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CustomList.css";
 import ListItem from "./ListItem";
 
-const CustomList = ({ allItems, itemsPerPage }) => {
+const CustomList = ({ allItems, itemsPerPage, onTeamSelect }) => {
     const [displayedItems, setDisplayedItems] = useState(
         allItems.slice(0, itemsPerPage)
     );
@@ -21,9 +21,11 @@ const CustomList = ({ allItems, itemsPerPage }) => {
                 {displayedItems.map((item, index) => (
                     <ListItem
                         key={index}
-                        image={item.image}
-                        title={item.title}
-                        description={item.description}
+                        index={index}
+                        rank={item.rank}
+                        name={item.name}
+                        region={item.region}
+                        onClick={() => onTeamSelect(item)}
                     />
                 ))}
                 {displayedItems.length < allItems.length && (

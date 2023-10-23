@@ -1,12 +1,15 @@
 import React from "react";
 import "./CustomList.css";
 
-const ListItem = ({ title, description }) => {
+const ListItem = ({ index, rank, name, region, onClick }) => {
     return (
-        <div className="card">
-            <div className="card-content">
-                <h3>{title}</h3>
-                <p>{description}</p>
+        <div className="list-item-container" onClick={onClick}>
+            <p className="rank">{index + 1}</p>
+            <div className="card">
+                <div className="card-content">
+                    <p className="name">{name}</p>
+                    <p className="region">{region}</p>
+                </div>
             </div>
         </div>
     );

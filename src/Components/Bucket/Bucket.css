@@ -1,14 +1,6 @@
 .bucket-container{
   flex: 1;
-  position: relative;
   display: flex;
-  flex-direction: column;
-
-}
-
-.group-frame-container{
-  flex:20;
-  position: relative;
 
 }
 
@@ -18,42 +10,28 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
-  width: 80%;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
 }
 
-.gap {
-  flex: 1;
-  position: relative;
-  /* needed for the absolute positioning of the image */
+.bucket-content {
+  font-size: x-large;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: white;
+  max-height: 30vh;
 }
 
 .bucket-content-container{
-  display: flex;
   flex-direction: column;
-  flex:1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  /* This ensures content is on top of the image */
   color: white;
-  /* Optional, adjust as desired */
-  margin: auto;
-}
-
-
-
-.bucket-content {
-  flex: 8;
+  display: flex;
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
   overflow-y: scroll;
-  font-size: large;
-  padding-bottom: 10px;
 }
-
-
 
 .bucket-content p {
   cursor: pointer;
@@ -62,6 +40,15 @@
   color: darkred;
 }
 
-.button-container:hover{
-  opacity: 0.8;
+
+.enter-button{
+  background-image: url("../../images/enter-button.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 9%;
+  width: 7%;
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 34%;
+  cursor: pointer;
 }

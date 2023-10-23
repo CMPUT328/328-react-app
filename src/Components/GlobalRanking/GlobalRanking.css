@@ -63,7 +63,7 @@
     width: 9.375rem;
     position: absolute;
     top: calc(3rem + 2rem);
-    box-sizing: border-box;
+
     z-index: 10;
 }
 
@@ -122,4 +122,40 @@
 
 .list-wrapper {
     margin: 5rem;
+}
+
+.list-and-info-container {
+    display: flex;
+    align-items: start;
+    gap: 5rem;
+}
+
+.team-info-name {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    padding-top: 13rem;
+    margin-bottom: 0;
+}
+
+.team-info-rank {
+    color: #fff;
+    font-size: 01rem;
+    padding: 0rem;
+    margin: 0;
+}
+
+.team-members {
+    color: #fff;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.team-members h3 {
+    margin-bottom: 0;
+}
+
+.team-members ul {
+    list-style-type: disc;
+    margin-left: 20px;
 }

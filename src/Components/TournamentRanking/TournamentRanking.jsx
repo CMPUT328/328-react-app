@@ -51,8 +51,6 @@ const TournamentRanking = () => {
                 </div>
             </div>
             <div className="list-and-info-container">
-                {" "}
-                {/* New Container */}
                 <div className="list-wrapper">
                     <CustomList allItems={allItems} itemsPerPage={5} />
                 </div>

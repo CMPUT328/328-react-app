@@ -1,15 +1,15 @@
 .frame-container{
-    flex:1;
-    display: flex;
-    flex-direction: column;
+    flex: 1;
+    position: relative;
+    color: white;
 }
 
-
-.part2{
-    flex:5;
-    position: relative;
-    margin-bottom: 5%;
-    /* needed for the absolute positioning of the image */
+.content-container {
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    margin: 10%;
+    margin-top: 20%;
 }
 
 /* Making the image responsive */
@@ -19,26 +19,8 @@
     background-position: center;
     background-repeat: no-repeat;
     height: 80vh;
-    margin-top: 30%;
     width: 100%;
 }
-
-.content-container {
-    display: flex;
-    flex-direction: column;
-    flex:1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    /* This ensures content is on top of the image */
-    color: white;
-    /* Optional, adjust as desired */
-    margin: auto;
-}
-
 
 .tabs{
     flex:1;
@@ -47,28 +29,32 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 10%;
+    margin-top: 22%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
+
 .tabs p{
     flex:1;
     font-size: x-large;
 }
 
 .tabs img {
-    width: 30px;
+    width: 2rem;
     /* Set to your desired width */
-    height: 30px;
+    height: 2rem;
     /* Set to your desired height */
-    margin: 0 10px;
+    margin: 0 1rem;
 
 }
 
 .content{
     flex:8;
     overflow-y: scroll;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
     margin-bottom: 5%;
+    max-height: 35vh;
 }
 
 .content p{
@@ -80,17 +66,21 @@
     color: grey;
 }
 
+
+
 .nextButton{
     position: absolute;
-    top: 85%;
-    left: 70%;
-}
-
-.nextButton img{
+    bottom: 5%;
+    right: 20%;
     cursor: pointer;
+    background-image: url("../../images/next-button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 15%;
+    width: 15%;
 }
 
-.nextButton img:hover{
+.nextButton :hover{
     opacity: 0.8;
 }
 
@@ -101,4 +91,10 @@ hr {
     margin-top: -5px;
 }
 
-
+.league-icon{
+    width: 2rem;
+    /* Set to your desired width */
+    height: 2rem;
+    /* Set to your desired height */
+    margin: 1rem 1rem;
+}
