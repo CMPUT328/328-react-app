@@ -1,6 +1,6 @@
 import './Header.css';
 
-import TeamLogo from '../../images/TeamLogo.png'; 
+import TeamLogo from '../../images/TeamLogo.png';
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
 

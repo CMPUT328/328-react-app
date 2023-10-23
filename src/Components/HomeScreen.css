@@ -80,7 +80,7 @@
 }
 
 .scroll-button:hover::after {
-    content: "Scroll to Ranking";
+    content: "See Our Prediction";
     position: absolute;
     top: 100%; /* positions the message just below the button */
     left: 50%; /* centers the message horizontally relative to the button */

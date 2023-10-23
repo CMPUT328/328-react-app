@@ -1,0 +1,128 @@
+.tournament {
+    width: 80%;
+    margin: auto;
+    position: relative;
+}
+
+.round {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.quarter-finals .match {
+    flex-basis: 50%;
+    position: relative;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    margin: 40px 0;
+    border: 1px solid #ddd;
+}
+
+.semi-finals {
+    position: relative;
+}
+
+.semi-finals .match {
+    flex-basis: calc(50% - 10px);
+    position: relative;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    margin: 80px 0;
+    border: 1px solid #ddd;
+}
+
+.champion {
+    width: 40%;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    margin: 80px auto;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Connectors */
+.quarter-finals .match:before,
+.semi-finals .match:before {
+    content: "";
+    position: absolute;
+    right: -20px; /* Increased the width for better visibility */
+    top: 50%;
+    height: 2px;
+    width: 20px;
+    background: gold; /* Color changed to gold */
+    z-index: 1;
+}
+
+.semi-finals .match:last-child:before {
+    left: -20px;
+    right: auto;
+}
+
+.tournament:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 2px;
+    width: 80%;
+    background: gold;
+}
+
+.semi-finals:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 2px;
+    width: 40%;
+    background: gold;
+    z-index: -1;
+}
+
+.match {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.team {
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+}
+
+/* More connectors */
+.team:last-child:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    height: 2px;
+    width: 20px;
+    background: gold;
+}
+
+.quarter-finals .match:after {
+    content: "";
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 35px;
+    background: gold;
+}
+
+.semi-finals .match:last-child:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    width: 20px;
+    height: 2px;
+    background: gold;
+}
