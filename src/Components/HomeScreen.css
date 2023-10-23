@@ -26,6 +26,15 @@
         -2px 2px 5px #fff;
 }
 
+.title-container h2 {
+    color: #a59b96;
+    font-weight: normal;
+    font-size: 4.2em;
+    margin-bottom: 10px; /* Adjust as needed */
+    /* text-shadow: 2px 2px 5px #fff, -2px -2px 5px #fff, 2px -2px 5px #fff,
+        -2px 2px 5px #fff; */
+}
+
 .custom-button {
     background: url("../images/HomeButton.png") no-repeat center center;
     background-size: cover; /* This will make the image cover the entire button */

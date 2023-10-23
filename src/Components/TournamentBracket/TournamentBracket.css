@@ -1,0 +1,10 @@
+/* src/components/TournamentBracket.css */
+.round .matchup.winner .team {
+    background-color: #00f;
+}
+
+svg g rect {
+    fill: #18191A;
+  }
+  
+
