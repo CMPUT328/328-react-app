@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
-import { listTournaments } from "../../graphql/queries";
+import "./TournamentRanking.css";
 
-const TeamSelector = ({ setBucket, getBucket }) => {
+const TournamentRanking = ({ getTeams }) => {
   const [tournaments, setTournaments] = useState([]);
   const [tournamentChoice, setTournamentChoice] = useState("");
 
   const fetchTournaments = async () => {
-    const regionData = await API.graphql(graphqlOperation(listTournaments));
+    const query = ` query MyQuery {
+            listTournaments(limit: 500) {
+                items {
+                id
+                tournament_name
+                }
+            }
+        }
+        `;
+    const regionData = await API.graphql(graphqlOperation(query));
     setTournaments(regionData.data.listTournaments.items);
   };
 
@@ -16,32 +25,26 @@ const TeamSelector = ({ setBucket, getBucket }) => {
   }, []);
 
   return (
-    <div className="frame-container">
-      <div alt="frame" className="responsive-image" id="frame">
-        <div className="content-container">
-          <div className="content">
-            {tournaments.forEach((tournament) => (
-              <div key={tournament.id}>
-                <p
-                  onClick={() => {
-                    setTournamentChoice(tournament.id);
-                  }}
-                  style={{
-                    color:
-                      tournamentChoice === tournament.id ? "#CBAF86" : null,
-                  }}
-                >
-                  {tournament.id}
-                </p>
-                <hr />
-              </div>
-            ))}
-          </div>
-          <div className="nextButton" onClick={() => {}} alt="next" />
-        </div>
+    <div className="container-tournament">
+      <div
+        className="content-tournament"
+        style={{ maxHeight: "80%", marginTop: "40%" }}
+      >
+        {tournaments.map((tournament) => (
+          <React.Fragment key={tournament.id}>
+            <p
+              onClick={() => {
+                getTeams(tournament.id);
+              }}
+            >
+              {tournament.tournament_name}
+            </p>
+            <hr />
+          </React.Fragment>
+        ))}
       </div>
     </div>
   );
 };
 
-export default TeamSelector;
+export default TournamentRanking;

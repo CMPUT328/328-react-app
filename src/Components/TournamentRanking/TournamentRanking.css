@@ -1,82 +1,71 @@
-.background-image {
-    height: 100vh;
-    width: 100%;
-}
-
-.header-container {
+.container-tournament {
     display: flex;
+    flex-direction: column;
+    /* Add this to stack content vertically */
+    justify-content: center;
+    /* This will vertically center the .content-tournament */
     align-items: center;
-    justify-content: space-between;
-    padding: 0 6rem;
+    /* This will horizontally center the .content-tournament */
+    height: 100vh;
+    /* This ensures the container takes the full viewport height */
+    
 }
 
-.header {
-    font-size: 3rem;
-    color: #a59b96;
-    text-align: left;
+.content-tournament {
+    width: 90%;
+    max-height: 70vh;
+    /* Set the maximum height, adjust the value as needed */
+    overflow-y: auto;
+    /* Allow vertical scrolling when the content is taller than max-height */
+    padding-right: 1rem;
+    /* Optional: Add some padding to avoid scroll bar touching the text */
+    box-sizing: border-box;
 }
 
-.button-group {
-    padding-top: 6rem;
-    display: flex;
-    gap: 1rem;
-}
-
-.list-wrapper {
-    margin: 4rem;
-}
-
-.region-btn {
-    background: url("../../images/region-btn.png") no-repeat center center;
-    background-size: cover;
-    border: none;
-    width: 9.375rem;
-    height: 6.1875rem;
+.nextButton {
+    margin-top: 20px;
+    /* Provide some spacing from the .content-tournament */
     cursor: pointer;
+    background-image: url("../../images/next-button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 15%;
+    width: 15%;
 }
 
-.tournament-btn {
-    background: url("../../images/tournament-btn.png") no-repeat center center;
-    background-size: cover;
-    border: none;
-    width: 9.375rem;
-    height: 6.1875rem;
+.content-tournament p {
     cursor: pointer;
+    font-size: 2rem;
+    /* Adjusted font size from 100rem to 2rem */
+    font-weight: bold;
+    color: #957557;
+    margin: 0;
+    padding: 0;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    overflow-y: scroll;
 }
 
-.league-btn {
-    background: url("../../images/league-btn.png") no-repeat center center;
-    background-size: cover;
+.content-tournament p:hover {
+
+    color: gold;
+}
+
+
+.nextButton:hover {
+    /* Fixed the typo here */
+    opacity: 0.8;
+}
+
+hr {
     border: none;
-    width: 9.375rem;
-    height: 6.1875rem;
-    cursor: pointer;
+    height: 2px;
+    background-image: linear-gradient(to right, #CBAF86, #957557, #957C57, #685931, #D2B100, #695611);
+    margin-top: -5px;
 }
 
-.region-btn,
-.tournament-btn,
-.league-btn {
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.region-btn:hover,
-.tournament-btn:hover,
-.league-btn:hover {
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
-}
-
-.list-and-info-container {
-    display: flex;
-    align-items: start;
-    gap: 2rem;
-}
-
-.team-info {
-    position: absolute;
-    right: 7rem;
-    flex-shrink: 0;
-    max-width: calc(50% - 1rem);
-    height: auto;
+.league-icon {
+    width: 2rem;
+    height: 2rem;
+    margin: 1rem 1rem;
 }
