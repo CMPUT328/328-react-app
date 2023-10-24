@@ -68,19 +68,6 @@ function Header() {
                             Global Ranking
                         </Link>
                     </li>
-                    <li>
-                        <Link
-                            to="/player-ranking"
-                            className={
-                                activeLink === "/player-ranking"
-                                    ? "activeLink"
-                                    : ""
-                            }
-                            onClick={() => setActiveLink("/player-ranking")}
-                        >
-                            Player Ranking
-                        </Link>
-                    </li>
                 </ul>
             </nav>
         </header>
