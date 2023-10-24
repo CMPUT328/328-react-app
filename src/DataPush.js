@@ -16,7 +16,7 @@ const league_data = require("./league_data/league_tournament.json");
 const tournament_data = require("./league_data/tournament_team.json");
 const team_data = require("./league_data/team_player.json");
 const player_data = require("./league_data/player_role.json");
-const team_rank = require("./league_data/ranked_teams_with_score_v2.json");
+const team_rank = require("./league_data/rank.json");
 
 const player_ranks = [];
 
@@ -150,8 +150,8 @@ const DataPush = () => {
       // update team
       try {
         const team_input = {
-          id: element.team_id,
-          rank: element.rank,
+          id: element.teamId,
+          rank: element.Combined_Rank,
         };
         const result = API.graphql({
           query: updateTeam,
@@ -193,7 +193,7 @@ const DataPush = () => {
     // pushTournament();
     // pushTeam();
     // pushPlayer();
-    // updateTeamRank();
+    updateTeamRank();
     // updatePalayerRank();
   });
 

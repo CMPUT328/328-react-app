@@ -3,6 +3,7 @@ body {
     background-image: url("./background.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: black;
     margin: 0 !important;
     padding: 0 !important;
 }

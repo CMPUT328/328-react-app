@@ -23,7 +23,7 @@ const CustomList = ({ allItems, itemsPerPage, onTeamSelect }) => {
                         key={index}
                         index={index}
                         rank={item.rank}
-                        name={item.name}
+                        name={item.team_name}
                         region={item.region}
                         onClick={() => onTeamSelect(item)}
                     />
