@@ -157,6 +157,7 @@ export const onCreateTeam = /* GraphQL */ `
       id
       team_name
       acronym
+      rank
       tournaments {
         nextToken
         __typename
@@ -177,6 +178,7 @@ export const onUpdateTeam = /* GraphQL */ `
       id
       team_name
       acronym
+      rank
       tournaments {
         nextToken
         __typename
@@ -197,6 +199,7 @@ export const onDeleteTeam = /* GraphQL */ `
       id
       team_name
       acronym
+      rank
       tournaments {
         nextToken
         __typename
@@ -232,6 +235,7 @@ export const onCreateTournamentTeamConnection = /* GraphQL */ `
         id
         team_name
         acronym
+        rank
         createdAt
         updatedAt
         __typename
@@ -263,6 +267,7 @@ export const onUpdateTournamentTeamConnection = /* GraphQL */ `
         id
         team_name
         acronym
+        rank
         createdAt
         updatedAt
         __typename
@@ -294,6 +299,7 @@ export const onDeleteTournamentTeamConnection = /* GraphQL */ `
         id
         team_name
         acronym
+        rank
         createdAt
         updatedAt
         __typename
@@ -311,6 +317,10 @@ export const onCreatePlayer = /* GraphQL */ `
       username
       role
       team_id
+      rank_2023
+      rank_2020
+      rank_2021
+      rank_2022
       createdAt
       updatedAt
       __typename
@@ -324,6 +334,10 @@ export const onUpdatePlayer = /* GraphQL */ `
       username
       role
       team_id
+      rank_2023
+      rank_2020
+      rank_2021
+      rank_2022
       createdAt
       updatedAt
       __typename
@@ -337,6 +351,10 @@ export const onDeletePlayer = /* GraphQL */ `
       username
       role
       team_id
+      rank_2023
+      rank_2020
+      rank_2021
+      rank_2022
       createdAt
       updatedAt
       __typename

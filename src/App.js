@@ -12,31 +12,22 @@ import PredictRankingScreen from "./Screens/PredictRankingScreen";
 import PlayerRankingScreen from "./Screens/PlayerRankingScreen";
 
 const App = () => {
-    return (
-        <Router>
-            <Header />
-            <Routes>
-                <Route path="/" element={<HomeScreen />} />
-                <Route
-                    path="/tournament-ranking"
-                    element={<TournamentRankingScreen />}
-                />
-                <Route path="/team-ranking" element={<TeamRankingScreen />} />
-                <Route
-                    path="/global-ranking"
-                    element={<GlobalRankingScreen />}
-                />
-                <Route
-                    path="/predict-ranking"
-                    element={<PredictRankingScreen />}
-                />
-                <Route
-                    path="/player-ranking"
-                    element={<PlayerRankingScreen />}
-                />
-            </Routes>
-        </Router>
-    );
+  return (
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route
+          path="/tournament-ranking"
+          element={<TournamentRankingScreen />}
+        />
+        <Route path="/team-ranking" element={<TeamRankingScreen />} />
+        <Route path="/global-ranking" element={<GlobalRankingScreen />} />
+        <Route path="/predict-ranking" element={<PredictRankingScreen />} />
+        <Route path="/player-ranking" element={<PlayerRankingScreen />} />
+      </Routes>
+    </Router>
+  );
 };
 
 export default App;

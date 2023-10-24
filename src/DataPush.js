@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "@aws-amplify/ui-react/styles.css";
-import { API } from "aws-amplify";
+import { API, graphqlOperation } from "aws-amplify";
 import {
   createRegion,
   createLeague,
@@ -8,6 +8,7 @@ import {
   createTournamentTeamConnection,
   createTeam,
   createPlayer,
+  updateTeam,
 } from "./graphql/mutations";
 
 const region_data = require("./league_data/region_league.json");
@@ -15,6 +16,14 @@ const league_data = require("./league_data/league_tournament.json");
 const tournament_data = require("./league_data/tournament_team.json");
 const team_data = require("./league_data/team_player.json");
 const player_data = require("./league_data/player_role.json");
+const team_rank = require("./league_data/ranked_teams_with_score_v2.json");
+
+const player_ranks = [];
+
+player_ranks[0] = require("./league_data/ranking_players_2020.json");
+player_ranks[1] = require("./league_data/ranking_players_2021.json");
+player_ranks[2] = require("./league_data/ranking_players_2022.json");
+player_ranks[3] = require("./league_data/ranking_players_2023.json");
 
 const DataPush = () => {
   // pushing region
@@ -136,12 +145,56 @@ const DataPush = () => {
     }
   }
 
+  async function updateTeamRank() {
+    team_rank.forEach((element) => {
+      // update team
+      try {
+        const team_input = {
+          id: element.team_id,
+          rank: element.rank,
+        };
+        const result = API.graphql({
+          query: updateTeam,
+          variables: { input: team_input },
+        });
+        console.log("Team updated:", result);
+      } catch (error) {
+        console.error("Error updating team:", error);
+      }
+    });
+  }
+
+  async function updatePalayerRank() {
+    const fields = ["rank_2020", "rank_2021", "rank_2022", "rank_2023"];
+    for (let i = 4; i < 5; i++) {
+      // get the player id
+      let j = 4;
+      Object.keys(player_ranks[i][j]).forEach(async (key) => {
+        try {
+          const query = `
+          mutation MyMutation {
+            updatePlayer(input: {id: ${key}, ${fields[i]}: ${player_ranks[i][j][key]}}) {
+              id
+              ${fields[i]}
+            }
+          }
+           `;
+          const result = API.graphql(graphqlOperation(query));
+          console.log("Player updated:", result);
+        } catch (error) {
+          console.error("Error updating", player_ranks[i][j][key]);
+        }
+      });
+    }
+  }
   useEffect(() => {
     // pushRegion();
     // pushLeague();
     // pushTournament();
     // pushTeam();
     // pushPlayer();
+    // updateTeamRank();
+    // updatePalayerRank();
   });
 
   return <></>;

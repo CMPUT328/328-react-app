@@ -173,6 +173,7 @@ export const getTeam = /* GraphQL */ `
       id
       team_name
       acronym
+      rank
       tournaments {
         nextToken
         __typename
@@ -198,6 +199,7 @@ export const listTeams = /* GraphQL */ `
         id
         team_name
         acronym
+        rank
         createdAt
         updatedAt
         __typename
@@ -226,6 +228,7 @@ export const getTournamentTeamConnection = /* GraphQL */ `
         id
         team_name
         acronym
+        rank
         createdAt
         updatedAt
         __typename
@@ -323,6 +326,10 @@ export const getPlayer = /* GraphQL */ `
       username
       role
       team_id
+      rank_2023
+      rank_2020
+      rank_2021
+      rank_2022
       createdAt
       updatedAt
       __typename
@@ -341,6 +348,10 @@ export const listPlayers = /* GraphQL */ `
         username
         role
         team_id
+        rank_2023
+        rank_2020
+        rank_2021
+        rank_2022
         createdAt
         updatedAt
         __typename
@@ -370,6 +381,10 @@ export const playersByTeam_id = /* GraphQL */ `
         username
         role
         team_id
+        rank_2023
+        rank_2020
+        rank_2021
+        rank_2022
         createdAt
         updatedAt
         __typename
