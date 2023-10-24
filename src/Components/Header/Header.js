@@ -1,11 +1,15 @@
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
-
 import TeamLogo from "../../images/TeamLogo.png";
-import { Link } from "react-router-dom";
-import React, { useState } from "react";
 
 function Header() {
-    const [activeLink, setActiveLink] = useState("/");
+    const location = useLocation();
+    const [activeLink, setActiveLink] = useState(location.pathname);
+
+    useEffect(() => {
+        setActiveLink(location.pathname);
+    }, [location.pathname]);
 
     return (
         <header>
@@ -72,7 +76,7 @@ function Header() {
                                     ? "activeLink"
                                     : ""
                             }
-                            onClick={() => setActiveLink("/global-ranking")}
+                            onClick={() => setActiveLink("/player-ranking")}
                         >
                             Player Ranking
                         </Link>
