@@ -3,7 +3,7 @@ import React from 'react';
 import './TournamentBracket.css';
 import { useWindowSize } from 'react-use';
 
-import { SingleEliminationBracket, Match, MATCH_STATES, SVGViewer } from '@g-loot/react-tournament-brackets';
+import { SingleEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
 
 const MyBracket = () => {
     const matches = [
@@ -153,9 +153,9 @@ const MyBracket = () => {
       
       const bracketOptions = {
         style: {
-            width: 500,
+            width: 450,
             boxHeight: 140,
-            height: height - 100
+            height: height - 200
         },
     };
 
