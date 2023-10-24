@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./PlayerRanking.css";
 import CustomList from "../CustomList/CustomList";
 
-const lanes = ["lane1", "lane2", "lane3"];
+const lanes = ["Top", "Jungle", "Mid", "ADC", "Support"];
 const years = ["2020", "2021", "2022", "2023"];
 const PlayerRanking = () => {
     const [laneDropdownVisible, setLaneDropdownVisible] = useState(false);
