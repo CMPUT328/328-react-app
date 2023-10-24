@@ -19,7 +19,7 @@ const TeamRankingScreen = () => {
 
   const formData = () => {
     const arr = [];
-    Object.keys(rankingTeam).map((key) => {
+    Object.keys(rankingTeam).forEach((key) => {
       console.log(rankingTeam[key].team_name);
       arr.push({
         id: key,
