@@ -60,7 +60,7 @@ const TeamSelector = ({ setBucket, getBucket }) => {
                 team {
                   id
                   team_name
-                  acronym
+                  rank
                 }
               }
             }
@@ -74,7 +74,7 @@ const TeamSelector = ({ setBucket, getBucket }) => {
       element.teams.items.forEach((team) => {
         teamList[team.team.id] = {
           team_name: team.team.team_name,
-          acronym: team.team.acronym,
+          rank: team.team.rank,
         };
       });
     });

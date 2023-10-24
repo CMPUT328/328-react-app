@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Bucket.css";
 
-const Bucket = ({ getBucket, setBucket }) => {
+const Bucket = ({ getBucket, setBucket, ready }) => {
   const removeTeam = (key) => {
     const temp = getBucket();
     delete temp[key];
@@ -11,7 +11,7 @@ const Bucket = ({ getBucket, setBucket }) => {
   return (
     <>
       <div className="bucket-container">
-        <div className="enter-button"></div>
+        <div className="enter-button" onClick={ready}></div>
         <div className="group-frame-image" alt="group-frame">
           <div className="bucket-content-container">
             <div className="bucket-content">
