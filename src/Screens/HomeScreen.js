@@ -1,5 +1,9 @@
 import React, { useRef } from "react";
-import "../Components/HomeScreen.css"; // Include styles
+import { Link } from "react-router-dom";
+
+import "../Components/HomeScreen.css";
+import MyBracket from "../Components/TournamentBracket/TournamentBracket";
+
 import Homebg from "../images/HomeBg.png";
 import Secondbg from "../images/bg-globalRanking.png"
 
@@ -21,14 +25,14 @@ function HomeScreen() {
       >
         <div className="title-container">
           <h1>Make your Worlds 2023 Prediction</h1>
-          <button
-            className="custom-button"
-            onClick={() => {
-              /* Navigate to another screen */
-            }}
-          >
-            Predict Ranking
-          </button>
+          <Link to="/global-ranking">
+            <button
+              className="custom-button"
+              onClick={() => {}}
+            >
+              Global Power Ranking
+            </button>
+          </Link>
         </div>
         <button className="scroll-button" onClick={handleScroll}></button>
       </div>
@@ -41,8 +45,10 @@ function HomeScreen() {
         }}
         ref={secondContainerRef}
       >
-        
-      </div>
+        <div className="title-container">
+        <h2>Our Worlds 2023 Prediction</h2></div>
+        <MyBracket />
+     </div>
     </div>
   );
 }

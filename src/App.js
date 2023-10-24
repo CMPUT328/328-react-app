@@ -9,7 +9,7 @@ import TournamentRankingScreen from "./Screens/TournamentRankingScreen";
 import TeamRankingScreen from "./Screens/TeamRankingScreen";
 import GlobalRankingScreen from "./Screens/GlobalRankingScreen";
 import PredictRankingScreen from "./Screens/PredictRankingScreen";
-import DataPush from "./DataPush";
+import PlayerRankingScreen from "./Screens/PlayerRankingScreen";
 
 const App = () => {
   return (
@@ -24,8 +24,8 @@ const App = () => {
         <Route path="/team-ranking" element={<TeamRankingScreen />} />
         <Route path="/global-ranking" element={<GlobalRankingScreen />} />
         <Route path="/predict-ranking" element={<PredictRankingScreen />} />
+        <Route path="/player-ranking" element={<PlayerRankingScreen />} />
       </Routes>
-      {/* <DataPush /> */}
     </Router>
   );
 };

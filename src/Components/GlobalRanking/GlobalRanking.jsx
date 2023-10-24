@@ -54,7 +54,7 @@ const GlobalRanking = () => {
 
     return (
         <div className="background-image">
-            <h1 className="header"> Global Ranking</h1>
+            <h1 className="header"> Global Power Ranking</h1>
             <div className="controls-wrapper">
                 <div className="dropdown">
                     <label htmlFor="dropdown-button"></label>
